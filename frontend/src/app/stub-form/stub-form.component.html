@@ -1,0 +1,851 @@
+<main id="main" class="createstub">
+
+  <!-- ======= Create your pay stub Section ======= -->
+  <section id="create-your-paystub" class="common-block">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 createstub-title">
+          <h2>Create your pay stub</h2>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Create your pay stub Section -->
+
+  <!-- ======= createstub-form Section ======= -->
+  <section id="createstub-form" class="">
+    <div class="container" data-aos="fade-up">
+      <form class="needs-validation" [formGroup]="payStubForm" (ngSubmit)="onSubmit()">
+        <div class="row form-group p-0">
+          <div class="col-lg-3 p-0">
+            <ul id="sticky-steps" class="nav nav-pills flex-column nav-justified thumbnail setup-panel">
+              <!-- step-completed -->
+              <li class="createstub-step" style="width: 100%" 
+                [ngClass]="{'active': showStep_1, 'step-completed': (completeStep_1 && !showStep_1)}"
+                (click)="showTab(completeStep_1, '1')">
+                <a href="#step-1">
+                  <span class="step-number">1</span>
+                  <h4 class="step">Step 1</h4>
+                  <p class="step-title">Company Information</p>
+                </a>
+                <hr />
+              </li>
+              <li class="createstub-step" style="width: 100%"
+                [ngClass]="{'active': showStep_2, 'step-completed': (completeStep_2 && !showStep_2), 'disabled': !completeStep_1}"
+                (click)="showTab(completeStep_1, '2')">
+                <a href="#step-2">
+                  <span class="step-number">2</span>
+                  <h4 class="step">Step 2</h4>
+                  <p class="step-title">Employee Information</p>
+                </a>
+                <hr />
+              </li>
+              <li class="createstub-step" style="width: 100%"
+                [ngClass]="{'active': showStep_3, 'step-completed': (completeStep_3 && !showStep_3), 'disabled': !completeStep_2}"
+                (click)="showTab(completeStep_2, '3')">
+                <a href="#step-3">
+                    <span class="step-number">3</span>
+                  <h4 class="step">Step 3</h4>
+                  <p class="step-title">Salary Information</p>
+                </a>
+                <hr />
+              </li>
+              <li class="createstub-step" style="width: 100%"
+                [ngClass]="{'active': showStep_4, 'step-completed': (completeStep_4 && !showStep_4), 'disabled': !completeStep_3}"
+                (click)="showTab(completeStep_3, '4')">
+                <a href="#step-4">
+                    <span class="step-number">4</span>
+                  <h4 class="step">Step 4</h4>
+                  <p class="step-title">Preview Your Stub</p>
+                </a>
+               
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-9" style="box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);background: #fff;">            
+            <div *ngIf="showStep_1" class="row createstub-content" id="step-1">
+              <div class="col-lg-12">
+                <div class="col-md-12 mb-5">
+                  <h2 class="title">
+                    Company Information</h2>
+                </div>
+                <div class="col-md-12">
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group validate-me">
+                        <label for="CompanyName">Company Name<span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="CompanyName" formControlName="companyName"
+                          placeholder="This field is mandatory" required>
+                        <!-- <div class="invalid-feedback">Company Name is required</div> -->
+                        <div *ngIf="companySubmitted && payStubForm.controls.companyName.errors" class="error">
+                          <div *ngIf="payStubForm.controls.companyName.errors.required">
+                            Company name is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group">
+                        <label for="CompanyLogo">Company Logo</label>
+                        <input type="file" class="form-control" id="CompanyLogo" (change)="previewFile($event)">
+    
+                        <div class="image-preview mb-3" *ngIf="payStubForm.value.companyLogo">
+                          <img [src]="payStubForm.value.companyLogo">
+                          <b *ngIf="fileName">{{ fileName }}</b>
+                        </div>
+    
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group">
+                        <label for="CompanyAddress">Company Address<span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="CompanyAddress" placeholder="Ex. 3305 Mt. Vernon Ct."
+                          formControlName="companyAddress" required>
+                        <div *ngIf="companySubmitted && payStubForm.controls.companyAddress.errors" class="error">
+                          <div *ngIf="payStubForm.controls.companyAddress.errors.required">
+                            Company address is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group validate-me">
+                        <label for="CompanyZipCode">Company Zip Code<span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="CompanyZipCode" minlength="5" maxlength="5"
+                          placeholder="Ex. 98225" formControlName="companyZipCode" mask="00000" required>
+                        <div *ngIf="companySubmitted && payStubForm.controls.companyZipCode.errors" class="error">
+                          <div *ngIf="payStubForm.controls.companyZipCode.errors">
+                            Company zip code must be in integar and length should be 5
+                          </div>
+                        </div>
+                        <div *ngIf="companySubmitted && !showLocation && !payStubForm.controls.companyZipCode.errors" class="error">
+                          Zip code is invalid
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="showLocation" class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group">
+                        <label for="CompanyLocation">Company Location (Optional)</label>
+                        <input type="text" class="form-control" id="CompanyLocation" formControlName="companyLocation">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group validate-me">
+                        <label for="CompanyPhoneNumber">Company Phone Number (Optional)</label>
+                        <input type="text" class="form-control" id="CompanyPhoneNumber" mask="(000) 000-0000" [showMaskTyped]="maskComPh" placeholder="ex: (535) 123-4567" formControlName="companyPhoneNumber" minlength="10" maxlength="15" (focus)="maskComPh = true" (focusout)="maskComPh = false">
+                        <div *ngIf="companySubmitted && payStubForm.controls.companyPhoneNumber.errors" class="error">
+                          <div *ngIf="payStubForm.controls.companyPhoneNumber.errors">
+                            Enter a valid phone number
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group validate-me">
+                        <label for="CompanyEIN-SSN">Company EIN/SSN (Optional)</label>
+                        <input type="text" class="form-control" id="CompanyEIN-SSN" mask="00-0000000" [showMaskTyped]="maskComSsn" (focus)="maskComSsn = true" (focusout)="maskComSsn = false" placeholder="Ex. 21-5687231" formControlName="companyEinSsn" minlength="9" maxlength="11">
+                        <div *ngIf="companySubmitted && payStubForm.controls.companyEinSsn.errors" class="error">
+                          <div *ngIf="payStubForm.controls.companyEinSsn.errors.minlength">
+                            Company EIN/SSN must be in integar and length should be 9
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-5">
+                    <div class="col-lg-12 col-md-12 text-center nexStep">
+                      <button type="submit" href="#step-2" id="activate-step-2" (click)="handleCompanyInfo()"
+                        class="btn nextStep-btn">Employee information</button>
+                      <p>You can always go back to the previous step to edit your information!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div *ngIf="showStep_2" class="row createstub-content" id="step-2">
+              <div class="col-lg-12">
+                <div class="col-md-12 mb-5">
+                  <h2 class="title">
+                    Employee Information</h2>
+                </div>
+                <div class="col-md-12">
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group validate-me">
+                        <label for="chooseState">Choose Your State<span class="mandatory">*</span></label>
+                        <select class="form-control custom-select" id="chooseState" formControlName="employeeState"
+                          required>
+                          <option> </option>
+                          <option value="alabama">Alabama</option>
+                          <option value="alaska">Alaska</option>
+                          <option value="arizona">Arizona</option>
+                          <option value="arkansas">Arkansas</option>
+                          <option value="california">California</option>
+                          <option value="colorado">Colorado</option>
+                          <option value="connecticut">Connecticut</option>
+                          <option value="delaware">Delaware</option>
+                          <option value="florida">Florida</option>
+                          <option value="georgia">Georgia</option>
+                          <option value="hawaii">Hawaii</option>
+                          <option value="idaho">Idaho</option>
+                          <option value="illinois">Illinois</option>
+                          <option value="indiana">Indiana</option>
+                          <option value="iowa">Iowa</option>
+                          <option value="kansas">Kansas</option>
+                          <option value="kentucky">Kentucky</option>
+                          <option value="louisiana">Louisiana</option>
+                          <option value="maine">Maine</option>
+                          <option value="maryland">Maryland</option>
+                          <option value="massachusetts">Massachusetts</option>
+                          <option value="michigan">Michigan</option>
+                          <option value="minnesota">Minnesota</option>
+                          <option value="mississippi">Mississippi</option>
+                          <option value="missouri">Missouri</option>
+                          <option value="montana">Montana</option>
+                          <option value="nebraska">Nebraska</option>
+                          <option value="nevada">Nevada</option>
+                          <option value="new_hampshire">New Hampshire</option>
+                          <option value="new_jersey">New Jersey</option>
+                          <option value="new_mexico">New Mexico</option>
+                          <option value="new_york">New York</option>
+                          <option value="north_carolina">North Carolina</option>
+                          <option value="north_dakota">North Dakota</option>
+                          <option value="ohio">Ohio</option>
+                          <option value="oklahoma">Oklahoma</option>
+                          <option value="oregon">Oregon</option>
+                          <option value="pennsylvania">Pennsylvania</option>
+                          <option value="rhode_island">Rhode Island</option>
+                          <option value="south_carolina">South Carolina</option>
+                          <option value="south_dakota">South Dakota</option>
+                          <option value="tennessee">Tennessee</option>
+                          <option value="texas">Texas</option>
+                          <option value="utah">Utah</option>
+                          <option value="virginia">Virginia</option>
+                          <option value="washington">Washington</option>
+                          <option value="west_virginia">West Virginia</option>
+                          <option value="wisconsin">Wisconsin</option>
+                          <option value="wyoming">Wyoming</option>
+                          <option value="vermont">Vermont</option>
+                          <option value="district_of_columbia">District Of Columbia</option>
+                        </select>
+                        <div *ngIf="employeeSubmitted && payStubForm.controls.employeeState.errors" class="error">
+                          <div *ngIf="payStubForm.controls.employeeState.errors.required">
+                            State is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group validate-me">
+                        <label for="EmploymentStatus">Employment Status<span class="mandatory">*</span></label>
+    
+                        <div class="form-radio createstub-check">
+                          <input type="radio" name="status" value="employee" id="employee"
+                            [checked]="empStatus == 'employee'" (change)="empStatus = 'employee'">
+                          <label for="employee" class="mr-2">Employee</label>
+                          <input type="radio" name="status" value="contractor" id="contractor"
+                            [checked]="empStatus == 'contractor'" (change)="empStatus = 'contractor'">
+                          <label for="contractor">Contractor</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group validate-me">
+                        <label for="EmployeeName">{{empStatus}} Name<span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="EmployeeName" placeholder="This field is mandatory"
+                          formControlName="employeeName" required>
+                        <div *ngIf="employeeSubmitted && payStubForm.controls.employeeName.errors" class="error">
+                          <div *ngIf="payStubForm.controls.employeeName.errors.required">
+                            Employee name is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group validate-me">
+                        <label for="EmployeeSNN">{{empStatus}} SSN (Last 4 Digits)<span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="EmployeeSSN" prefix="xxx-xx-" mask="AAAA" [showMaskTyped]="maskEmpSsn" (focus)="maskEmpSsn = true" (focusout)="maskEmpSsn = false" placeholder="XXX-XX-____" formControlName="employeeSSN" minlength="4" maxlength="13" required>
+                        <div *ngIf="employeeSubmitted && payStubForm.controls.employeeSSN.errors" class="error">
+                          <div *ngIf="payStubForm.controls.employeeSSN.errors">
+                            Employee SSN is required and length should be 10
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group">
+                        <label for="EmployeeAddress">{{empStatus}} Address<span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="EmployeeAddress" placeholder="Ex. 3305 Mt. Vernon Ct."
+                          formControlName="employeeAddress" required>
+                        <div *ngIf="employeeSubmitted && payStubForm.controls.employeeAddress.errors" class="error">
+                          <div *ngIf="payStubForm.controls.employeeAddress.errors.required">
+                            Employee address is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group validate-me">
+                        <label for="EmployeeZip">{{empStatus}} Zip Code<span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="EmployeeZip" placeholder="Ex. 98225"
+                          formControlName="employeeZipCode" minlength="5" maxlength="5" numbersOnly required>
+                        <div *ngIf="employeeSubmitted && payStubForm.controls.employeeZipCode.errors" class="error">
+                          <div *ngIf="payStubForm.controls.employeeZipCode.errors">
+                            Employee zipcode is required and length should be 5
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group">
+                        <label for="EmployeeID">{{empStatus}} ID (Optional)</label>
+                        <input type="text" class="form-control" id="EmployeeID" placeholder="ex. 123456"
+                          formControlName="employeeId">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group">
+                        <label for="MaritalStatus">Marital Status (Optional)</label>
+                        <select class="form-control custom-select" id="MaritalStatus"
+                          formControlName="employeeMaritalStatus">
+                          <option>(optional)</option>
+                          <option value="single">Single</option>
+                          <option value="married">Married</option>
+                          <option value="head_of_household">Head of household</option>
+                          <!-- dontKnow -->
+                          <option value="dontKnow">I don't know</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group">
+                        <label for="DependantsNumber">Number Of Dependants (Optional)</label>
+                        <select class="form-control custom-select" id="DependantsNumber"
+                          formControlName="employeeNoOfDependants">
+                          <option value=""></option>
+                          <option value="0" selected="selected">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="9+">9+</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-2">
+                    <div class="col-lg-6 col-md-12">
+                      <div class="form-group">
+                        <label for="BlindExemptions">Age 65+ / Blind Exemptions (Optional)</label>
+                        <select class="form-control custom-select" id="BlindExemptions" formControlName="employeeAgeBlind">
+                          <option value=""></option>
+                          <option value="0" selected="selected">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="9+">9+</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-5">
+                    <div class="col-lg-12 col-md-12 text-center nexStep">
+                      <button type="submit" href="#step-3" id="activate-step-3" (click)="handleEmployeeInfo()"
+                        class="btn nextStep-btn">Salary information</button>
+                      <p>You can always go back to the previous step to edit your information!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div *ngIf="showStep_3" class="row createstub-content" id="step-3">
+              <div class="col-lg-12">
+    
+                <div class="col-md-12 mb-5">
+                  <h2 class="title">Salary Information</h2>
+                </div>
+    
+                <div class="row mb-2">
+                  <div class="col-lg-6 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="EmploymentStatus">Employment Status<span class="mandatory">*</span></label>
+    
+                      <div class="form-radio createstub-check">
+                        <input type="radio" class="hourly" name="employmentStatus" value="hourly" id="hourly" (change)="employmentStatus($event.target.value)"
+                          [checked]="empPaidStatus == 'hourly'">
+                        <label for="hourly" class="mr-2">Hourly</label>
+                        <input type="radio" class="salary" name="employmentStatus" value="salary" id="salary" (change)="employmentStatus($event.target.value)"
+                          [checked]="empPaidStatus == 'salary'">
+                        <label for="salary">Salary</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="row mb-2">
+    
+                  <div *ngIf="hourly" class="col-lg-6 col-md-12 toHide Toggle-input-1">
+                    <div class="form-group validate-me">
+                      <label for="HourlyRate">Hourly Rate<span class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="HourlyRate" placeholder="ex: 20.00"
+                        formControlName="hourlyRate" numbersOnly required>
+                      <div class="invalid-feedback">Hourly Rate is required</div>
+                    </div>
+                  </div>
+    
+                  <div *ngIf="salary" class="col-lg-6 col-md-12 toHide Toggle-input-2">
+                    <div class="form-group validate-me">
+                      <label for="AnnualSalary">Annual Salary<span class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="AnnualSalary" placeholder="ex: 60,000"
+                        formControlName="salaryAnnual" numbersOnly required>
+                      <div *ngIf="salarySubmitted && payStubForm.controls.salaryAnnual.errors" class="error">
+                        <div *ngIf="payStubForm.controls.salaryAnnual.errors">
+                          Annual salary is required and must be in numeric
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-6 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="EmailAddress">Your Email Address<span class="mandatory">*</span></label>
+                      <input type="email" class="form-control" id="EmailAddress" placeholder="This field is mandatory"
+                        formControlName="email" required>
+                      <div *ngIf="salarySubmitted && payStubForm.controls.email.errors" class="error">
+                        <div *ngIf="payStubForm.controls.email.errors">
+                          Please enter a valid email address
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+                </div>
+    
+                <div class="row mb-2">
+                  <div class="col-lg-6 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="PayFrequency">Pay Frequency (Pay Period)<span class="mandatory">*</span></label>
+                      <select class="form-control custom-select" id="PayFrequency" formControlName="payFrequency" required>
+                        <option value="onetime">Once</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly (Ex: Every Friday)</option>
+                        <option value="biweekly">Bi-Weekly (ex: every other Wednesday)</option>
+                        <option value="semimonthly">Semi-Monthly (ex: 1st and 16th)</option>
+                        <option value="monthly">Monthly (ex: 1st of month only)</option>
+                        <option value="quarterly">Quarterly</option>
+                        <option value="semiannually">Semi-Annually</option>
+                        <option value="annually">Annually</option>
+                      </select>
+                      <div *ngIf="salarySubmitted && payStubForm.controls.payFrequency.errors" class="error">
+                        <div *ngIf="payStubForm.controls.payFrequency.errors">
+                          PayFrequency is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-6 col-md-12">
+                    <div id="add-PayDate">
+                      <div class="form-group validate-me">
+                        <label for="PayDate">Pay Date(S) Needed<span class="mandatory">*</span>
+                          <!--<button class="btn btn-link btn-sm pr-0 pb-0 pt-0 float-right" id="add">
+                            <span class="fa fa-plus pr-2"></span>Add Pay Date
+                          </button>-->
+                        </label>
+                        <input type="text" class="form-control" placeholder="yyyy-mm-dd" formControlName="payDate" value=""
+                          id="PayDate" ngbDatepicker #pd="ngbDatepicker" (click)="pd.toggle()"
+                          (ngModelChange)="sameAsCheckDate()" required readonly>
+                        <div *ngIf="salarySubmitted && payStubForm.controls.payDate.errors" class="error">
+                          <div *ngIf="payStubForm.controls.payDate.errors">
+                            PayDate is required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="row mb-2">
+    
+                  <div class="col-lg-6 col-md-12">
+                    <div class="form-group ">
+                      <label for="EmployeeHireDate">Employee Hire Date</label>
+                      <div class="toggle-Yes-No d-flex mt-10">
+                        <label for="EmployeeHireDate" class="float-left">Was This Employee Hired In 2020?</label>
+                        <div class="toggle-switch ml-3 float-left">
+                          <input type="checkbox" name="toggle-switch" class="toggle-switch-checkbox" id="toggle-switch"
+                            (change)="employeeHireDateIsChecked = !employeeHireDateIsChecked"
+                            [checked]="employeeHireDateIsChecked">
+                          <label class="toggle-switch-label" for="toggle-switch">
+                            <span class="toggle-switch-inner"></span>
+                            <span class="toggle-switch-switch"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div *ngIf="employeeHireDateIsChecked" class="Employee-Hired">
+                        <input type="text" class="form-control" id="EmployeeHired2020" formControlName="employeeHireDate"
+                          placeholder="yyyy-mm-dd" ngbDatepicker #ehd="ngbDatepicker" (click)="ehd.toggle()" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div *ngIf="hourly" class="col-lg-6 col-md-12 toHide Toggle-input-1">
+                    <div class="form-group validate-me">
+                      <label for="">Your Work Schedule Is <span class="mandatory">*</span></label>
+                      <div class="form-radio createstub-check">
+                        <input type="radio" class="Fixed" name="Work-Schedule" [checked]="fixedIsChecked" value="1" id="Fixed" (change)="workSchedule($event.target.value)">
+                        <label for="Fixed" class="mr-2">Fixed</label>
+                        <input type="radio" class="Varied" name="Work-Schedule" [checked]="variedIsChecked" value="2" id="Varied" (change)="workSchedule($event.target.value)">
+                        <label for="Varied">Varied</label>
+                      </div>
+                      <div *ngIf="fixedIsChecked" class="form-group toHide-hrs Toggle-hrs-1">
+                        <label for="Worked-Per-Pay">Hours Worked Per Pay Period <span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="Worked-Per-Pay" formControlName="fixHrs" numbersOnly />
+                        <span class="hrs-sign">hrs</span>
+                      </div>
+                      <div *ngIf="variedIsChecked" class="form-group toHide-hrs Toggle-hrs-2">
+                        <label for="Min-Worked-Per-Period">Min. Hrs Worked Per Period <span
+                            class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="Min-Worked-Per-Period" formControlName="variedMinHrs" numbersOnly />
+                        <span class="hrs-sign">hrs</span>
+                      </div>
+                      <div *ngIf="variedIsChecked" class="form-group toHide-hrs Toggle-hrs-2">
+                        <label for="Max-Worked-Per-Pay-Period">Max. Hrs Worked Per Period <span
+                            class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="Max-Worked-Per-Pay-Period" formControlName="variedMaxHrs" numbersOnly />
+                        <span class="hrs-sign">hrs</span>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div *ngIf="salary" class="col-lg-6 col-md-12 toHide Toggle-input-2">
+                    <div class="form-group ">
+                      <label for="">Hourly Rate</label>
+                      <div class="form-checkbox mt-10">
+                        <input type="checkbox" class="add-HourlyRate" id="HourlyRate"
+                          (change)="hourlyIsChecked = !hourlyIsChecked" [checked]="hourlyIsChecked">
+                        <label for="HourlyRate">Show Hourly Rate On Pay Stub</label>
+                      </div>
+                      <div *ngIf="hourlyIsChecked" class="Hours-Worked position-relative">
+                        <label for="HoursWorked" class="mt-10">Hours Worked Per Pay Period (Optional)</label>
+                        <input type="text" class="form-control" id="HoursWorked" formControlName="hourlyRatePerPayPeriod"
+                          value="80" numbersOnly />
+                        <span class="hrs-sign">hrs</span>
+                      </div>
+                    </div>
+                  </div>
+    
+                </div>
+    
+                <div class="row m-0 form-row-divider pt-4">
+                  <div class="col-lg-6 col-md-12 pl-0 mb-3">
+                    <div class="salary-step-label">
+                      <span>Check Numbers</span>
+                    </div>
+                    <div class="col-lg-6 col-md-12 float-left pl-0 pr-2">
+                      <div class="form-group">
+                        <label for="CheckDate">Date</label>
+                        <input type="text" class="form-control" id="CheckDate" formControlName="checkNoDate" readonly>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 float-left pl-2 pr-0">
+                      <div class="form-group validate-me">
+                        <label for="CheckNumber">Check Number<span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="CheckNumber" placeholder="1234"
+                          formControlName="checkNo" numbersOnly required>
+                        <div *ngIf="salarySubmitted && payStubForm.controls.checkNo.errors" class="error">
+                          <div *ngIf="payStubForm.controls.checkNo.errors">
+                            Check Number is required and must be in numeric
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="row m-0 pt-4 form-row-divider">
+                  <div class="col-lg-6 col-md-12 pl-0 mb-3">
+                    <div class="salary-step-label mb-4">                        
+                      <span>Additions <button class="btn btn-link btn-sm pr-0 pb-0 pt-0 ml-5 add-additions" (click)="addAdditions()" id=""><span
+                        class="fa fa-plus pr-2"></span>Add Additions</button></span>
+                    </div>
+                    <!--formArrayName="additions"-->
+                    <section *ngFor="let addition of additions; let i = index" >
+                      <div class="row">
+                        <div class="col-lg-6 col-md-12 float-left pr-2">    
+                          <div class="form-group validate-me">
+                            <label for="Addition-Description">Description<span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" id="Addition-Description" name="desc_{{ i }}" (keyup)="additionDesc($event.target.value, i)" value="{{ (addition.description) ? addition.description : ''  }}" required>
+                            <div *ngIf="salarySubmitted && addition.description == ''" class="error">
+                                Description is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 float-left pl-2 mb-3">
+                          <div class="form-group validate-me">
+                            <label for="Addition-PayDate">Pay Date<span class="mandatory">*</span></label>
+                            <select class="form-control custom-select" id="Addition-PayDate" name="payDate_{{ i }}" required>
+                              <!--<option value="Apply-to-all">Apply to all</option>-->
+                              <option [value]="sameDate">{{ sameDate }}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-6 col-md-12 float-left pr-2">
+                          <div class="form-group validate-me">
+                            <label for="Addition-CurrentAmount">Current Amount <span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" id="Addition-CurrentAmount" name="current_amount_{{ i }}" (keyup)="additionCurrAmount($event.target.value, i)" value="{{ (addition.currentAmount) ? addition.currentAmount : ''  }}" numbersOnly required>
+                            <div *ngIf="salarySubmitted && addition.currentAmount == ''" class="error">
+                                Current Amount is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 float-left mb-3 pl-2 ">
+                          <div class="form-group  validate-me">
+                            <label for="Addition-YTDAmount">YTD Amount<span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" id="Addition-YTDAmount" name="ytdAmount_{{ i }}" (keyup)="additionYtdAmount($event.target.value, i)" value="{{ (addition.ytdAmount) ? addition.ytdAmount : ''  }}" numbersOnly required>
+                            <div *ngIf="salarySubmitted && addition.ytdAmount == ''" class="error">
+                              YTD Amount is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <span class="delete-addition" (click)="removeAdditions(i)">Delete Addition</span>
+                    </section>
+
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-6 col-md-12 pr-0 mb-3">
+                    <div class="salary-step-label mb-4">
+                      <span>Deductions <button class="btn btn-link btn-sm pr-0 pb-0 pt-0 ml-5 add-deductions" (click)="addDeductions()" id="">
+                        <span class="fa fa-plus pr-2"></span>Add Deductions</button>
+                      </span>
+                    </div>
+                    
+                    <section *ngFor="let deduction of deductions; let i = index" >
+
+                      <div class="row">
+                        <div class="col-lg-6 col-md-12 float-left pr-2">
+                          <div class="form-group validate-me">
+                            <label for="Deduction-Description">Description <span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" id="Deduction-Description" (keyup)="deductionDesc($event.target.value, i)" value="{{ (deduction.description) ? deduction.description : '' }}" required>                            
+                            <div *ngIf="salarySubmitted && deduction.description == ''" class="error">
+                                Description is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 float-left pl-2 mb-3">
+                          <div class="form-group  validate-me">
+                            <label for="Deduction-PayDate">Pay Date<span class="mandatory">*</span></label>
+                            <select class="form-control custom-select" id="Deduction-PayDate" required>
+                              <!--<option value="Apply-to-all">Apply to all</option>-->
+                              <option [value]="sameDate">{{ sameDate }}</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-6 col-md-12 float-left pr-2">
+                          <div class="form-group  validate-me">
+                            <label for="Deduction-CurrentAmount">Current Amount <span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" id="Deduction-CurrentAmount" (keyup)="deductionCurrAmount($event.target.value, i)" value="{{ (deduction.currentAmount) ? deduction.currentAmount : '' }}" numbersOnly required>                            
+                            <div *ngIf="salarySubmitted && deduction.currentAmount == ''" class="error">
+                                Current Amount is required
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 float-left mb-3 pl-2 ">
+                          <div class="form-group  validate-me">
+                            <label for="Deduction-YTDAmount">YTD Amount<span class="mandatory">*</span></label>
+                            <input type="text" class="form-control" id="Deduction-YTDAmount" (keyup)="deductionYtdAmount($event.target.value, i)" value="{{ (deduction.ytdAmount) ? deduction.ytdAmount : '' }}" numbersOnly required>
+                            <div *ngIf="salarySubmitted && deduction.ytdAmount == ''" class="error">
+                              YTD Amount is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <span class="delete-deduction" (click)="removeDeductions(i)">Delete Deduction</span>
+
+                    </section>
+                  </div>
+                </div>
+    
+                <div class="row mt-5">
+                  <div class="col-lg-12 col-md-12 text-center nexStep">
+                    <button type="submit" href="#step-4" id="activate-step-4" (click)="handleReviewStub()"
+                      class="btn nextStep-btn">Review your stub</button>
+                    <p>You can always go back to the previous step to edit your information!</p>
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+    
+            <div *ngIf="showStep_4" class="row createstub-content" id="step-4">
+              <div class="col-lg-12">
+                <div class="col-md-12 mb-5">
+                  <h2 class="title">Preview Your Pay Stub Form</h2>
+                </div>
+                <div class="col-md-12 col-lg-10 offset-lg-1">
+                  <p class="note text-center">Choose your preferred template, revise your information and download your
+                    stub(s)
+                    <span>Note: All watermarks and background images will be removed from your final document(s).</span>
+                  </p>
+                  <div class="stub-templates">
+                    <div class="template-item ">
+                      <label class="template-color-box" [class]="{'template-active': template == 'a'}" id="template-A">
+                        <input type="radio" name="template" checked="" value="A" class="hidden" id="stub-template-A"
+                          (click)="template = 'a'; generateHtmlToImage()">
+                      </label> <span class="template-title">Template A</span>
+                    </div>
+                    <div class="template-item">
+                      <label class="template-color-box" [class]="{'template-active': template == 'b'}" id="template-B">
+                        <input type="radio" name="template" checked="" value="B" class="hidden" id="stub-template-B"
+                          (click)="template = 'b'; generateHtmlToImage()">
+                      </label> <span class="template-title">Template B</span>
+                    </div>
+                    <div class="template-item">
+                      <label class="template-color-box" [class]="{'template-active': template == 'c'}" id="template-C">
+                        <input type="radio" name="template" checked="" value="C" class="hidden" id="stub-template-C"
+                          (click)="template = 'c'; generateHtmlToImage()">
+                      </label> <span class="template-title">Template C</span>
+                    </div>
+                    <div class="template-item">
+                      <label class="template-color-box" [class]="{'template-active': template == 'd'}" id="template-D">
+                        <input type="radio" name="template" checked="" value="D" class="hidden" id="stub-template-D"
+                          (click)="template = 'd'; generateHtmlToImage()">
+                      </label> <span class="template-title">Template D</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-lg-10 offset-lg-1 mb-3">
+                  <div class="stub-preview">
+                    <div *ngIf="!paystubImageSrc">
+                      <app-spinner></app-spinner>
+                    </div>
+                    <img else class="w-100" [src]="paystubImageSrc">
+                  </div>
+                </div>
+                <div class="row mt-5">
+                  <div class="col-lg-12 col-md-12 text-center nexStep">
+                    <!-- data-toggle="modal" data-target="#payment-modal" (click)="testDownload()" -->
+                    <button type="submit" data-toggle="modal" data-target="#payment-modal" class="nextStep-btn">Checkout & Download</button>
+                    <p>Make sure your information is correct and continue to pay and download your stub(s)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>        
+
+      </form>
+    </div>
+  </section><!-- End createstub-form Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Payment Modal ======= -->
+<div class="modal fade" id="payment-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="d-flex">
+        <h2 class="title">Checkout</h2>
+        <div class="Secure-payment-methods d-flex">
+          <img class="ml-4" src="assets/media/icons/security-blue.svg">
+          <div>
+            <p>100% Security</p>
+            <p>Secure payment methods</p>
+          </div>
+        </div>
+      </div>
+      <button #closePaypalModal type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="modal-body p-0">
+        <div class="popup-note mt-5">On the next screen, you will have the option of either paying with
+          your Paypal account, or simply to Pay with a Credit or Debit card without creating a Paypal account.
+        </div>
+        <div class="popup-table">
+          <table>
+            <tbody>
+              <tr>
+                <td class="td-left">Price per stub<span>$9.99</span></td>
+                <td class="td-right">$8.99</td>
+              </tr>
+              <tr>
+                <td class="td-left">Number of stubs</td>
+                <td class="td-right">x1</td>
+              </tr>
+              <tr>
+                <td class="td-left">Total</td>
+                <td class="td-right"><b>$8.99</b></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="form-radio text-left mt-4">
+            <input type="radio" name="status" value="employee" id="paypal" checked="">
+            <label for="paypal"> <img src="assets/media/paypal-logo.webp" alt="PayPal"> </label>
+          </div>
+        </div>
+        <div class="text-center">
+          <!-- <button type="submit" class="pay-btn">Pay $8.99</button> -->
+          <div id="paypal-checkout-btn"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- End Payment Modal Section -->

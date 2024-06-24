@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Online Check Stub Maker | Pay Stub Generator Software | Create Pay Stubs Instantly | GetPayStubs</title>
+  <base href="/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <app-root></app-root>
+
+  <a href="javascript:;" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    var target = $("#add-PayDate");
+    var n = function () {
+      return $("").length;
+    };
+    var newInput = function () {
+      var div = $("<div/>", {
+        "class": "input-group"
+      });
+      var input = $("<input>", {
+        "class": "form-control"
+      });
+      var span = $("<span/>", {
+        "class": "input-group-btn"
+      });
+      var button = $("<button/>", {
+        "class": "removeBtn pr-0 btn btn-sm btn-link",
+        type: "button",
+        id: n()
+      });
+      var glyph = $("<i/>", {
+        "class": "fa fa-times"
+      });
+      var col = $("<div/>", {
+        "class": "form-group",
+        id: "newInput-" + n()
+      });
+
+      $(glyph).appendTo(button);
+      $(button).appendTo(span);
+      $(input).appendTo(div);
+      $(span).appendTo(div);
+      $(div).appendTo(col);
+      return col;
+    };
+
+    $('button#add').on('click', function () {
+      $(newInput()).appendTo(target);
+    });
+
+    $('#add-PayDate').on('click', 'button', function () {
+      var target = $("#add-PayDate").find("#newInput-" + this.id);
+      $(target).remove();
+    });
+
+    function AddHourlyRate() {
+      if ($('.add-HourlyRate').is(":checked"))
+        $(".Hours-Worked").show();
+      else
+        $(".Hours-Worked").hide();
+    };
+
+    function AddHourlyRate() {
+      if ($('.add-HourlyRate').is(":checked"))
+        $(".Hours-Worked").show();
+      else
+        $(".Hours-Worked").hide();
+    };
+
+    /* function toggleSwitch() {
+      if ($('.toggle-switch-checkbox').is(":checked"))
+        $(".Employee-Hired").show();
+      else
+        $(".Employee-Hired").hide();
+    }; */
+
+    /* $(function () {
+      $("[name=employment-status]").click(function () {
+        $('.toHide').hide();
+        $(".Toggle-input-" + $(this).val()).show();
+      });
+    }); */
+
+    $(function () {
+      $("[name=Work-Schedule]").click(function () {
+        $('.toHide-hrs').hide();
+        $(".Toggle-hrs-" + $(this).val()).show();
+      });
+    });
+
+    var target = $("#add-HoursWorked-PayDate");
+
+    var an = function () {
+      return $("").length;
+    };
+
+    var anewInput = function () {
+      var div = $("<div/>", {
+        "class": "input-group"
+      });
+      var input = $("<input>", {
+        "class": "form-control"
+      });
+      var span = $("<span/>", {
+        "class": "input-group-btn"
+      });
+      var button = $("<button/>", {
+        "class": "removeBtn pr-0 btn btn-sm btn-link",
+        type: "button",
+        id: an()
+      });
+      var glyph = $("<i/>", {
+        "class": "fa fa-times"
+      });
+      var col = $("<div/>", {
+        "class": "form-group",
+        id: "anewInput-" + an()
+      });
+
+      $(glyph).appendTo(button);
+      $(button).appendTo(span);
+      $(input).appendTo(div);
+      $(span).appendTo(div);
+      $(div).appendTo(col);
+      return col;
+    };
+
+    $('button#Hours-Worked-Add').on('click', function () {
+      $(anewInput()).appendTo(target);
+    });
+
+    $('#add-HoursWorked-PayDate').on('click', 'button', function () {
+      var target = $("#add-HoursWorked-PayDate").find("#anewInput-" + this.id);
+      $(target).remove();
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>    
+
+</body>
+</html>

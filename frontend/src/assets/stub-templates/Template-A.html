@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style type="text/css">
+      body {
+        font-family: "Montserrat", Helvetica, Arial, sans-serif;
+        color: #444444;
+        font-weight: 500;
+        width: 900px;
+        padding: 20px;
+        margin: auto;
+        max-height: 500px;
+      }
+
+      .company-name {
+        float: left;
+        margin-top: 20px;
+        width: calc(100% - 190px);
+        margin-bottom: 20px;
+        align-self: center;
+      }
+
+      .company-logo {
+        width: 120px;
+        float: left;
+        height: 75px;
+        padding-right: 20px;
+      }
+
+      .company-logo img {
+        width: 120px;
+        height: 100%;
+      }
+
+      .statement-title {
+        font-size: 18px;
+        font-weight: 600 !important;
+        color: #2450a9;
+        float: right;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        align-self: center;
+      }
+
+      .company-name p,
+      .statement-title h4 {
+        margin: 0;
+      }
+
+      .watermark {
+        position: absolute;
+        opacity: 0.75;
+        top: 110px;
+        background-image: url("http://wos.gardendesignlandscaping.com:8080/assets/media/paystub-watermark.png");
+        width: 900px;
+        height: 350px;
+        background-repeat: no-repeat;
+        transform: rotate(-2deg);
+      }
+
+      .font-s14 {
+        font-size: 14px;
+      }
+
+      .paystub-header {
+        display: flex;
+      }
+
+      .d-none {
+        display: none;
+      }
+
+      table {
+        border-collapse: collapse;
+        font-size: 13px;
+        width: 100%;
+      }
+
+      td,
+      th {
+        text-align: left;
+        padding: 2px 8px;
+      }
+
+      th {
+        background-color: #2450a9;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .bg-gray {
+        background: #ebebeb;
+      }
+
+      .height-50 {
+        height: 50px;
+      }
+
+      .height-15 {
+        height: 15px;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .text-right {
+        text-align: right;
+      }
+
+      .position-absolute{
+        position: absolute;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    {{#if watermark }}
+      <div class="watermark"></div>
+    {{/if}}
+    <div class="paystub-header">
+      <div class="company-name">
+        {{#if companyLogo }}
+        <div class="company-logo"><img src="{{ companyLogo }}" /></div>
+        {{/if}}
+        <p>{{ companyName }}</p>
+        <p class="font-s14">{{ companyAddress }}</p>
+        <p class="font-s14">{{ companyPhoneNumber }}</p>
+        <p class="font-s14">{{ companyEinSsn }}</p>
+      </div>
+      <div class="statement-title">
+        <h4>Earnings Statement</h4>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr class="height-50">
+          <th class="text-align" colspan="2">Employe Name</th>
+          <th class="text-align">Social sec. ID</th>
+          <th class="text-align">Employe ID</th>
+          <th class="text-align">Check No.</th>
+          <th class="text-align">Pay Record</th>
+          <th class="text-align">Pay Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="height-50">
+          <td colspan="2">{{ empName }}</td>
+          <td class="text-align">{{ empSSN }}</td>
+          <td class="text-align">{{ empId }}</td>
+          <td class="text-align">{{ checkNo }}</td>
+          <td class="text-align">{{ payRecord }}</td>
+          <td class="text-align">{{ payDate }}</td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr class="height-50">
+          <th width="140px">Earnings</th>
+          <th class="text-center">Rates</th>
+          <th class="text-center">Hours</th>
+          <th class="text-center">Current</th>
+          <th>Deductions</th>
+          <th class="text-center">Current</th>
+          <th class="text-center">Year to date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="height-15">
+          <td class="bg-gray"></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+          <td class="bg-gray"></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+        </tr>
+        <tr>
+          <td class="bg-gray">Regular Earnings</td>
+          <td class="text-center">{{ rates }}</td>
+          <td class="text-center">{{ hours }}</td>
+          <td class="text-center">{{ regularEarning }}</td>
+          <td class="bg-gray">Federal Tax</td>
+          <td class="text-center">{{ ftCurrent }}</td>
+          <td class="text-center">{{ ftYtd }}</td>
+        </tr>
+        
+        <tr style="display: table-caption;height: 0;">
+          <td> 
+            <table class="position-absolute" width="472px" style="margin-top:-2px;width:472px;">
+              {{#each additions}}
+                <tr>
+                  <td style="left: -8px;position: relative;" class="bg-gray" width="148px">{{this.description}}</td>
+                  <td class="text-center"></td>
+                  <td class="text-center"></td>
+                  <td class="text-right" width="320px">{{ this.currentAmount }}</td>
+                </tr>              
+              {{/each}} 
+            </table>
+          </td>
+        </tr>
+      
+        {{#if showhidestate}}
+          <tr>
+            <td class="bg-gray"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="bg-gray">{{ empState }} State Tax</td>
+            <td class="text-center">{{ stateTax }}</td>
+            <td class="text-center">{{ stateTaxytd}}</td>
+          </tr>
+        {{/if}} 
+        
+        {{#if showhidsdi}}
+          <tr>
+            <td class="bg-gray"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="bg-gray">SDI</td>
+            <td class="text-center">{{ sdiCurrent }}</td>
+            <td class="text-center">{{ sdiYtd }}</td>
+          </tr>
+        {{/if}}
+
+        <tr>
+          <td class="bg-gray"></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+          <td class="bg-gray">SOC SEC/ OASDI</td>
+          <td class="text-center">{{ ssCurrent }}</td>
+          <td class="text-center">{{ ssYtd }}</td>
+        </tr>
+        <tr>
+          <td class="bg-gray"></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+          <td class="bg-gray">Health Insurance Tax</td>
+          <td class="text-center">{{ hitCurrent }}</td>
+          <td class="text-center">{{ hitYtd }}</td>
+        </tr>
+
+        {{#each deductions}}
+          <tr>
+            <td class="bg-gray"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="bg-gray">{{this.description}}</td>
+            <td class="text-center">{{ this.currentAmount }}</td>
+            <td class="text-center">{{ this.ytdAmount }}</td>
+          </tr>
+        {{/each}}
+
+        <tr class="height-50">
+          <td class="bg-gray"></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+          <td class="bg-gray"></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+        </tr>
+      </tbody>
+      <thead>
+        <tr class="height-50">
+          <th class="text-center">YTD Gross</th>
+          <th class="text-center">YTD Deductions</th>
+          <th class="text-center">YTD Net Pay</th>
+          <th class="text-center">Current Total</th>
+          <th class="text-center" colspan="2">Current Deductions</th>
+          <th class="text-center">Net Pay</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="height-50">
+          <td class="text-center">{{ ytdGross }}</td>
+          <td class="text-center">{{ ytdDeduction }}</td>
+          <td class="text-center">{{ ytdNetPay }}</td>
+          <td class="text-center">{{ currentTotal }}</td>
+          <td class="text-center" colspan="2">{{ currentDeduction }}</td>
+          <td class="text-center">{{ netPay }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

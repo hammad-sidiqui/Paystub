@@ -1,0 +1,31 @@
+{
+  "name": "taxee",
+  "version": "1.0.0",
+  "description": "Taxee's Apis",
+  "_main": "index.js",
+  "scripts": {
+    "_start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "serverstart": "DEBUG=icon-paystub:* npm run devstart",
+    "start": "nodemon index"
+  },
+  "author": "Ahsan",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "handlebars": "^4.7.6",
+    "morgan": "~1.9.1",
+    "number-to-words": "^1.2.4",
+    "puppeteer": "^2.1.1",
+    "zips": "^1.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "taxee-tax-statistics": "^2020.1.1"
+  }
+}

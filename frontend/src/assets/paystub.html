@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+            color: #444444;
+            font-weight: 500;
+            width: 900px;
+            padding: 20px;
+            margin: auto;
+            max-height: 500px;
+        }
+
+        .company-name {
+            float: left;
+            margin-top: 20px;
+            width: calc(100% - 190px);
+            margin-bottom: 20px;
+            align-self: center;
+        }
+
+        .company-logo {
+            width: 120px;
+            float: left;
+            padding-right: 20px;
+        }
+
+        .company-logo img {
+            width: 120px;
+
+        }
+
+        .statement-title {
+            font-size: 18px;
+            font-weight: 600 !important;
+            color: #2450A9;
+            float: right;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            align-self: center;
+        }
+
+        .company-name p,
+        .statement-title h4 {
+            margin: 0;
+        }
+
+        .watermark {
+            position: absolute;
+            opacity: 0.75;
+            top: 110px;
+            background-image: url('http://localhost:4200/assets/media/paystub-watermark.png');
+            width: 900px;
+            height: 350px;
+            background-repeat: no-repeat;
+            transform: rotate(-2deg);
+        }
+
+        .font-s14 {
+            font-size: 14px;
+        }
+
+        .paystub-header {
+            display: flex;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            font-size: 13px;
+            width: 100%;
+        }
+
+        td,
+        th {
+            text-align: left;
+            padding: 2px 8px;
+        }
+
+        th {
+            background-color: #2450A9;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .bg-gray {
+            background: #ebebeb;
+        }
+
+        .height-50 {
+            height: 50px;
+        }
+
+        .height-15 {
+            height: 15px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="watermark"></div>
+    <div class="paystub-header">
+        <div class="company-name">
+            <p>{{ companyName }}</p>
+            <!--<div class="company-logo"><img src="http://localhost:4200/assets/media/Qavi-Technologies_web.png"/></div>
+            <p class="font-s14 d-none">B 201, 2nd Floor, Town A, Blossom Trade Centre</p>
+            <!-- <p class="font-s14 d-none">B 201, 2nd Floor, Town A, Blossom Trade Centre</p> -->
+            <p class="font-s14">(000) 000 0000</p>
+            <p class="font-s14">EIN: 000-000000</p>
+        </div>
+        <div class="statement-title">
+            <h4>Earnings Statement</h4>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr class="height-50">
+                <th class="text-align" colspan="2">Employe Name</th>
+                <th class="text-align">Social sec. ID</th>
+                <th class="text-align">Employe ID</th>
+                <th class="text-align">Check No.</th>
+                <th class="text-align">Pay Record</th>
+                <th class="text-align">Pay Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="height-50">
+                <td colspan="2">{{ name }}</td>
+                <td class="text-align">{{ emplSSN }}</td>
+                <td class="text-align">{{ empId }}</td>
+                <td class="text-align">{{ checkNo }}</td>
+                <td class="text-align">{{ payRecord }}</td>
+                <td class="text-align">{{ payDate }}</td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr class="height-50">
+                <th>Earnings</th>
+                <th>Rates</th>
+                <th>Hours</th>
+                <th>Current</th>
+                <th>Deductions</th>
+                <th>Current</th>
+                <th>Year to date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="height-15">
+                <td class="bg-gray"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="bg-gray"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="bg-gray">Regular Earnings</td>
+                <td> </td>
+                <td> </td>
+                <td>{{ regularEarning }}</td>
+                <td class="bg-gray">Federal Tax </td>
+                <td>{{ ftCurrent }}</td>
+                <td>{{ ftYtd }}</td>
+            </tr>
+            <tr>
+                <td class="bg-gray"> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td class="bg-gray">SDI</td>
+                <td>{{ sdiCurrent }}</td>
+                <td>{{ sdiYtd }}</td>
+            </tr>
+            <tr>
+                <td class="bg-gray"> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td class="bg-gray">SOC SEC/ OASDI</td>
+                <td>{{ ssCurrent }}</td>
+                <td>{{ ssYtd }}</td>
+            </tr>
+            <tr>
+                <td class="bg-gray"> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td class="bg-gray">Health Insurance Tax</td>
+                <td>{{ hitCurrent }}</td>
+                <td>{{ hitYtd }}</td>
+            </tr>
+            <tr class="height-50">
+                <td class="bg-gray"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="bg-gray"></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr class="height-50">
+                <th>YTD Gross</th>
+                <th>YTD Deductions</th>
+                <th>YTD Net Pay</th>
+                <th>Current Total</th>
+                <th colspan="2">Current Deductions</th>
+                <th>Net Pay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="height-50">
+            <td>{{ ytdGross }}</td>
+            <td>{{ ytdDeduction }}</td>
+            <td>{{ ytdNetPay }}</td>
+            <td>{{ currentTotal }}</td>
+            <td>{{ currentDeduction }}</td>
+            <td>{{ netPay }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

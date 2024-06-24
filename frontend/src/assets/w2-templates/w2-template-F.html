@@ -1,0 +1,326 @@
+<!DOCTYPE HTML >
+
+<html>
+<head>
+	
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+	<title></title>
+
+	<!-- font -->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	
+	<style type="text/css">
+		body { width: 900px;
+				padding: 20px;
+				margin: auto;
+		}
+		td{
+			padding:0 5px;
+		}
+		table {
+			width:100%;
+			border-collapse: collapse;
+				width: 100%;
+		}
+				body,div,table,thead,tbody,tfoot,tr,th,td,p {
+				font-family: "Montserrat";
+				font-size: 12px;
+			}
+			.watermark {
+            position: absolute;
+			opacity: 0.75;
+			top: 0;
+			background-image: url(http://wos.gardendesignlandscaping.com:8080/assets/media/paystub-watermark.png);
+			width: 910px;
+			left: 0;
+			right: 0;
+			margin: auto;
+			height: 620px;
+			z-index: 999;
+			transform: rotate(-2deg);
+        }
+		</style>
+		
+	
+</head>
+
+<body>
+<table>
+	<colgroup span="2" width="64"></colgroup>
+	<colgroup width="77"></colgroup>
+	<colgroup span="9" width="64"></colgroup>
+	<div class="watermark"></div>
+	<tr>
+		<td style="padding-left:5px; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">{{companyName}}</font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">Pay Period {{payRecord}}</font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="left" valign=middle bgcolor="#DCF3D6"><b><font color="#000000">Required Deduction</font></b></td>
+	
+	</tr>
+	<tr>
+		<td style="padding-left:5px; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><b><font color="#000000">Earning</font></b></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">Federal Income Tax</font></td>
+		<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="0" sdnum="1033;0;0.00"><font color="#000000">{{federalTax}}	</font></td>
+		<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="0" sdnum="1033;0;0.00"><font color="#000000">{{federalTaxYtd}}</font></td>
+	
+	</tr>
+	<tr>
+		<td style="padding-left:5px; border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><b><font color="#000000">Hour</font></b></td>
+		<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><b><font color="#000000">Rate</font></b></td>
+		<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><b><font color="#000000">This Period</font></b></td>
+		<td style="border-top: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><b><font color="#000000">YTD</font></b></td>
+		<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">FICA - Medicare</font></td>
+		<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="6.08" sdnum="1033;"><font color="#000000">{{MedicareTaxWithHeld}}</font></td>
+		<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="12.16" sdnum="1033;"><font color="#000000">{{MedicareTaxWithHeldYtd}}	</font></td>
+
+	</tr>
+	<tr>
+		<td style="padding-left:5px; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6" sdval="50" sdnum="1033;"><font color="#000000">{{hours}}</font></td>
+		<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6" sdval="9" sdnum="1033;0;0.00"><font color="#000000">{{hourly}}</font></td>
+		<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6" sdval="450" sdnum="1033;0;0.00"><font color="#000000">{{regularEarning}}</font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6" sdval="900" sdnum="1033;0;0.00"><font color="#000000">{{ytdGross}}</font></td>
+		<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">WI State Income Tax</font></td>
+		<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="0" sdnum="1033;0;0.00"><font color="#000000">{{stateTax}}</font></td>
+		<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="0" sdnum="1033;0;0.00"><font color="#000000">{{stateTaxYtd}}</font></td>
+
+	</tr>
+	<tr>
+		<td style="padding-left:5px; border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">Gross Pay</font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6" sdval="450.5" sdnum="1033;0;0.00"><b><font color="#000000">{{grossPay}}</font></b></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><b><font color="#000000"><br></font></b></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6" sdval="900" sdnum="1033;0;0.00"><b><font color="#000000">{{grossPayYtd}}</font></b></td>
+		<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">FICA - Social Security</font></td>
+		<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="25.92" sdnum="1033;"><font color="#000000">{{socialSecurityTaxWithHeld}}</font></td>
+		<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="51.84" sdnum="1033;"><font color="#000000">{{socialSecurityTaxWithHeldYtd}}</font></td>
+
+	</tr>
+	<tr>
+		<td height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom bgcolor="#DCF3D6"><b><font color="#000000">Other Deductions</font></b></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">Health Insurance</font></td>
+		<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="0" sdnum="1033;0;0.00"><font color="#000000">0.00</font></td>
+		<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="0" sdnum="1033;0;0.00"><font color="#000000">0.00</font></td>
+
+	</tr>
+	<tr>
+		<td height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-left: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">401K </font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="0" sdnum="1033;0;0.00"><font color="#000000">0.00</font></td>
+		<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="0" sdnum="1033;0;0.00"><font color="#000000">0.00</font></td>
+
+	</tr>
+	<tr>
+		<td height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-left: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">Parking</font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="0" sdnum="1033;0;0.00"><font color="#000000">0.00</font></td>
+		<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="0" sdnum="1033;0;0.00"><font color="#000000">0.00</font></td>
+
+	</tr>
+	<tr>
+		<td height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=middle bgcolor="#DCF3D6"><b><font color="#000000">NET PAY</font></b></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="418" sdnum="1033;0;&quot;$&quot;#,##0.00_);[RED]\(&quot;$&quot;#,##0.00\)"><b><font color="#000000">{{netPay}}</font></b></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="right" valign=bottom bgcolor="#DCF3D6" sdval="836" sdnum="1033;0;&quot;$&quot;#,##0.00_);[RED]\(&quot;$&quot;#,##0.00\)"><b><font color="#000000">{{ytdNetPay}}</font></b></td>
+
+	</tr>
+	<tr>
+		<td height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px dotted #000000; border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="padding-left:10px; border-top: 1px solid #000000; border-left: 1px solid #000000" colspan=2 height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">Your Employer </font></td>
+		<td style="border-top: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-top: 1px solid #000000" colspan=3 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">Check Number: {{checkNo}}</font></td>
+		<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="padding-left:10px; border-left: 1px solid #000000" colspan=2 height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">{{companyStreetAddress}}</font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td colspan=2 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">Pay Date: {{payDate}}</font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="padding-left:10px; border-left: 1px solid #000000" colspan=3 height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">{{companyLocation}}. {{companyZipCode}}</font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="border-left: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="border-left: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="padding-left:10px;border-left: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">PAY</font></td>
+		<td style="border-right: 1px solid #000000" colspan=8 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">***{{amountInWords}}*************************${{netPay}}</font></td>
+
+	</tr>
+	<tr>
+		<td style="border-left: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="border-left: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="padding-left:10px; border-left: 1px solid #000000" colspan=2 height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">To the Order of </font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="border-left: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td colspan=2 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">{{empFirstName}} {{empLastName}}</font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="border-left: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td colspan=2 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">{{empStreetAddress}}</font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="border-left: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td colspan=3 align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000">{{empState}}, {{empZipCode}}</font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+	<tr>
+		<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="20" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+		<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom bgcolor="#DCF3D6"><font color="#000000"><br></font></td>
+
+	</tr>
+</table>
+<!-- ************************************************************************** -->
+</body>
+
+</html>

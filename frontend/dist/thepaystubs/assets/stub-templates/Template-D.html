@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- font -->    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        body {
+            font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+            color: #444444;
+            font-weight: 500;
+            width: 900px;
+            padding: 20px;
+            margin: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            font-size: 13px;
+            width: 100%;
+        }
+
+        td,
+        th {
+            text-align: left;
+            padding: 2px 8px;
+        }
+
+        th {
+            color: #333;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .bg-gray {
+            background: #ebebeb;
+        }
+
+        .height-50 {
+            height: 50px;
+        }
+
+        .height-15 {
+            height: 15px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .paystub-topheader .company-name {
+            font-size: 20px;
+        }
+
+        .paystub-topheader,
+        .paystub-amount {
+            width: 100%;
+            display: inline-block;
+        }
+
+        .generated-date {
+            font-size: 16px;
+            color: #333;
+            float: right;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+        }
+
+        .amount {
+            font-size: 16px;
+            color: #333;
+            float: right;
+            text-align: right;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+        }
+
+        .amount-words {
+            width: calc(100% - 112px) !important;
+        }
+
+        .border-top-bottom {
+            border-top: 2px solid #c7c7c7;
+            border-bottom: 2px solid #c7c7c7;
+        }
+
+        .font-weight-normal {
+            font-weight: 500 !important;
+        }
+
+        .font-weight-bold {
+            font-weight: 700 !important;
+        }
+
+        .company-name,
+        .amount-words,
+        .company-info {
+            float: left;
+            margin-top: 20px;
+            width: calc(100% - 190px);
+            margin-bottom: 20px;
+            align-self: center;
+        }
+
+        .company-logo {
+            width: 120px;
+            float: left;
+            padding-right: 20px;
+        }
+
+        .company-logo img {
+            width: 120px;
+
+        }
+
+        .statement-title {
+            font-size: 18px;
+            font-weight: 600 !important;
+            color: #2450A9;
+            float: right;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            align-self: center;
+        }
+
+        .company-name p,
+        .statement-title h4,
+        .amount-words p,
+        .amount p,
+        .company-info p {
+            margin: 0;
+        }
+
+        .amount span {
+            font-size: 12px;
+        }
+
+        .watermark {
+            position: absolute;
+            opacity: 0.75;
+            top: 260px;
+            background-image: url('http://wos.gardendesignlandscaping.com:8080/assets/media/paystub-watermark.png');
+            width: 900px;
+            height: 620px;
+            transform: rotate(-2deg);
+        }
+
+        .font-s14 {
+            font-size: 14px;
+        }
+
+        .paystub-header {
+            display: flex;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .paystub-amount {
+            border-width: 2px 0 2px 0;
+            border-style: solid;
+            display: flex;
+            border-color: #c7c7c7;
+        }
+
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+
+        .paystub-order {
+            display: flex
+        }
+
+        .paystub-order .name {
+            font-size: 18px;
+            padding-left: 30px;
+            align-self: center;
+        }
+
+        .paystub-order .order {
+            align-self: center;
+            color: #c7c7c7;
+        }
+
+        .paystub-footer {
+            float: right;
+            width: 250px;
+            margin-top: 20px;
+        }
+
+        .paystub-footer .check,
+        .paystub-footer .net-pay,
+        .paystub-footer .YTD-net-pay {
+            display: flex;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .paystub-footer .check p,
+        .paystub-footer .YTD-net-pay p,
+        .paystub-footer .net-pay p {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .paystub-footer .check span,
+        .paystub-footer .YTD-net-pay span,
+        .paystub-footer .net-pay span {
+            float: right;
+            text-align: right;
+            line-height: 36px;
+            width: 100%;
+        }
+
+        .paystub-footer .border-top-bottom {
+            border-top: 1.5px solid #c7c7c7;
+            border-bottom: 1.5px solid #c7c7c7;
+        }
+       
+    </style>
+</head>
+
+<body>
+
+    <div class="paystub-topheader">
+        <div class="company-name">            
+            {{#if companyLogo }}
+                <div class="company-logo"><img src="{{ companyLogo }}"/></div>
+            {{/if}}
+            <p>{{ companyName }}</p>
+            <p class="font-s14">{{ companyAddress }}</p>
+        </div>
+        <div class="generated-date">
+            <p>{{ currDate }}</p>
+        </div>
+    </div>
+    <div class="paystub-amount">
+        <div class="amount-words">
+            <p>Pay Four Hundred Thrity-eight Dollars And Twenty-six Cents</p>
+        </div>
+        <div class="amount">
+            <p>{{ netPay }}</p>
+            <span>This is not a check</span>
+        </div>
+    </div>
+    <div class="paystub-order ">
+        <div class="order">
+            <p>Pay to the order of</p>
+        </div>
+        <div class="name">
+            <p>{{ empName }}</p>
+        </div>
+    </div>
+    <div class="watermark"></div>
+    <div class="paystub-header">
+        <div class="company-info">
+            <p class="font-weight-bold mb-10">Company Information</p>
+            <p>{{ companyName }}</p>
+            <p class="font-s14">{{ companyAddress }}</p>
+            <p class="font-s14">{{ companyPhoneNumber }}</p>
+            <p class="font-s14">{{ companyEinSsn }}</p>
+        </div>
+        <div class="statement-title">
+            <h4>Earnings Statement</h4>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr class="height-50 bg-gray">
+                <th colspan="2">Employe Information</th>
+                <th colspan="2">Social sec. ID</th>
+                <th class="text-center">Employe ID</th>
+                <th class="text-center">Start Date</th>
+                <th class="text-center">End Date</th>
+                <th class="text-center">Check Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="height-50">
+                <td colspan="2">{{ empName }}</td>
+                <td colspan="2">{{ empSSN }}</td>
+                <td class="text-center">{{ empId }}</td>
+                <td class="text-center">{{ payDate }}</td>
+                <td class="text-center">{{ payDate }}</td>
+                <td class="text-center">{{ payDate }}</td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr class="height-50 border-top-bottom">
+                <th>Earnings</th>
+                <th>Rates</th>
+                <th class="text-center">Hours</th>
+                <th class="text-center">Current</th>
+                <th class="text-center">Year to Date</th>
+                <th>Deductions</th>
+                <th class="text-center">Current</th>
+                <th class="text-center">Year to date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="height-15">
+                <td class="bg-gray"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="bg-gray"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+            </tr>
+            <tr>
+                <td class="bg-gray">Regular Earnings</td>
+                <td class="text-center">{{ rates }}</td>
+                <td class="text-center">{{ hours }}</td>
+                <td class="text-center">{{ regularEarning }}</td>
+                <td class="text-center">{{ regularEarning }}</td>
+                <td class="bg-gray">Federal Tax </td>
+                <td class="text-center">{{ ftCurrent }}</td>
+                <td class="text-center">{{ ftYtd }}</td>
+            </tr>
+            <tr>
+                <td class="bg-gray"> </td>
+                <td class="text-center"> </td>
+                <td class="text-center"> </td>
+                <td class="text-center"> </td>
+                <td class="text-center"> </td>
+                <td class="bg-gray">SDI</td>
+                <td class="text-center">{{ sdiCurrent }}</td>
+                <td class="text-center">{{ sdiYtd }}</td>
+            </tr>
+            <tr>
+                <td class="bg-gray"> </td>
+                <td class="text-center"> </td>
+                <td class="text-center"> </td>
+                <td class="text-center"> </td>
+                <td class="text-center"> </td>
+                <td class="bg-gray">SOC SEC/ OASDI</td>
+                <td class="text-center">{{ ssCurrent }}</td>
+                <td class="text-center">{{ ssYtd }}</td>
+            </tr>
+            <tr>
+                <td class="bg-gray"> </td>
+                <td class="text-center"> </td>
+                <td class="text-center"> </td>
+                <td class="text-center"> </td>
+                <td class="text-center"> </td>
+                <td class="bg-gray">Health Insurance Tax</td>
+                <td class="text-center">{{ hitCurrent }}</td>
+                <td class="text-center">{{ hitYtd }}</td>
+            </tr>
+            <tr class="height-50">
+                <td class="bg-gray"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+                <td class="text-center"> </td>
+                <td class="text-center"></td>
+                <td class="bg-gray"></td>
+                <td class="text-center"></td>
+                <td class="text-center"></td>
+            </tr>
+
+            <tr class="height-50 border-top-bottom">
+                <th colspan="3">Gross Earnings</th>
+                <th class="text-center font-weight-normal">{{ regularEarning }}</th>
+                <th class="text-center font-weight-normal">{{ totalYtdEarning }}</th>
+                <th>Gross Deductions</th>
+                <th class="text-center font-weight-normal">{{ totalDeduction }}</th>
+                <th class="text-center font-weight-normal">{{ totalYtdDeduction }}</th>
+            </tr>
+        </tbody>
+    </table>
+    <div class="paystub-footer">
+        <div class="check">
+            <p class="font-weight-bold">Check No.</p>
+            <span>{{ checkNo }}</span>
+        </div>
+        <div class="net-pay border-top-bottom">
+            <p class="font-weight-bold">Net Pay</p>
+            <span>{{ netPay }}</span>
+        </div>
+        <div class="YTD-net-pay">
+            <p class="font-weight-bold">YTD Net Pay</p>
+            <span>{{ ytdNetPay }}</span>
+        </div>
+
+    </div>
+</body>
+
+</html>

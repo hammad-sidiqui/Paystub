@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	
+	<!-- font -->
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	
+	<style>
+		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Open Sans"; font-size:x-small }
+		
+
+		.outside-border{
+			border: 1px solid #000;
+		}
+		td{
+			padding: 0 8px;
+		}
+		font{
+			color: #000000;
+		}
+		.border-right{
+			border-right: 1px solid #000;
+		}
+		.border-left{
+			border-left: 1px solid #000;
+		}
+		.border-top{
+			border-top: 1px solid #000;
+		}
+		.border-bottom{
+			border-bottom: 1px solid #000;
+		}
+		.border-dotted-top{
+			border-top: 1px dotted #000;
+		}
+		.v-top{
+			vertical-align: top;
+		}
+		.mx-0{
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+	</style>
+	
+</head>
+
+<body>
+
+{{#if watermark }} <div class="watermark"></div> {{/if}}
+<table class="outside-border" cellspacing="0" border="0">
+	<colgroup width="84"></colgroup>
+	<colgroup width="203"></colgroup>
+	<colgroup width="134"></colgroup>
+	<colgroup span="5" width="64"></colgroup>
+	<colgroup width="68"></colgroup>
+	<colgroup span="3" width="64"></colgroup>
+	<tbody>
+	<tr>
+		<td class=" border-right border-bottom" rowspan=2 height="40" align="center" sdval="22222" sdnum="1033;">
+			<font face="OCR A Extended" size="3">22222</font>
+		</td>
+		<td class="border-right" align="left">
+			<font face="Arial" size="1">a. Employes's social security number </font>
+		</td>
+		<td class="border-bottom" colspan="10" rowspan=2 align="left">
+			<font face="Arial" size="2" >OMB No. 1545-000B</font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-right border-bottom" align="center">
+			<font face="Arial" size=3>123-12-3121</font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-right" colspan=5 height="20" align="left">
+			<font face="Arial" size=1>b. Employer Identification Number (EIN)</font>
+		</td>
+		<td class="border-right" colspan=4 align="left">
+			<font>1. Wages, tips other compensation</font>
+		</td>
+		<td class="" colspan=3 align="left">
+			<font>2. Federal income tax withheld</font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-bottom border-right" colspan=5 height="21" align="center">
+			<font face="Arial" size=3>{{ empSSN }}</font>
+		</td>
+		<td class="border-bottom border-right" colspan=4 align="center" sdnum="1033;0;#,##0.00">
+			<font size=3>{{annualSalary}}</font>
+		</td>
+		<td class="border-bottom" colspan=3 align="center" sdval="148863.5" sdnum="1033;0;#,##0.00">
+			<font size=3>{{federalTax}}</font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-right " colspan=5 height="20" align="left">
+			<font>c. Employer's name, address and zip code</font>
+		</td>
+		<td class="border-right" colspan=4 align="left">
+			<font>3. Social security wages</font>
+		</td>
+		<td class="" colspan=3 align="left">
+			<font>4. Socail security tax withheld</font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-bottom border-right " colspan=5 rowspan="5" height="21" align="left">
+			<font size=3>{{ businessName }} <br> {{ companyStreetAddress }}	 <br> {{ companyLocation }}	</font>
+		</td>
+		<td class="border-bottom border-right" colspan=4 align="center" sdval="500000" sdnum="1033;0;#,##0.00">
+			<font size=3> {{annualSalary}} </font>
+		</td>
+		<td class="border-bottom" colspan=3 align="center" sdval="31000" sdnum="1033;0;#,##0.00">
+			<font size=3>{{socialSecurityTaxWithHeld}}</font>
+		</td>
+	</tr>
+	<tr>
+		<!-- <td class="" colspan=5 height="21" align="left">
+			<font size=3>  </font>
+		</td> -->
+		<td class="border-right" colspan=4 align="left">
+			<font>5. Medicare wages and tips</font>
+		</td>
+		<td class="" colspan=3 align="left">
+			<font>6. Medicare tax withheld</font>
+		</td>
+	</tr>
+	<tr>
+		<!-- <td class="" colspan=5 height="21" align="left">
+			<font size=3> Staten Island, Ny 1035</font>
+		</td> -->
+		<td class="border-bottom border-right" colspan=4 align="center" sdval="500000" sdnum="1033;0;#,##0.00">
+			<font size=3>{{annualSalary}}</font>
+		</td>
+		<td class="border-bottom" colspan=3 align="center" sdval="7250" sdnum="1033;0;#,##0.00">
+			<font size=3>{{MedicareTaxWithHeld}}</font>
+		</td>
+	</tr>
+	<tr>
+		<!-- <td class="" colspan="5" height="21" align="left">
+			<font size=3><br></font>
+		</td> -->
+		<td class="border-right" colspan=4 align="left">
+			<font>7. Social security tips</font>
+		</td>
+		<td class="" colspan=3 align="left">
+			<font>8. Allocated tips</font>
+		</td>
+	</tr>
+	<tr>
+		<!-- <td class="" colspan="5" height="21" align="left">
+			<font size=3><br></font>
+		</td> -->
+		<td class="border-bottom border-right" colspan=4 align="center" sdval="0" sdnum="1033;0;#,##0.00">
+			<font size=3>0.00</font>
+		</td>
+		<td class="border-bottom" colspan=3 align="center" sdval="0" sdnum="1033;0;#,##0.00">
+			<font size=3>0.00</font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-right" colspan=5 rowspan="1" height="20" align="left">
+			<font>d. Control number</font>
+		</td>
+		<td class="" align="left" sdval="9" sdnum="1033;">
+			<font>9</font>
+		</td>
+		<td class="border-right" colspan=3 align="center" bgcolor="#b3b3b3">
+			<font><br></font>
+		</td>
+		<td class="" colspan=3 align="left">
+			<font>10. Dependant care benefits</font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-bottom border-right" colspan="5" height="21" align="left">
+			<font><br></font>
+		</td>
+
+		<td class="border-bottom border-right" colspan=4 align="center" bgcolor="#b3b3b3">
+			<font><br></font>
+		</td>
+		<td class="border-bottom" colspan=3 align="center" sdval="0" sdnum="1033;0;#,##0.00">
+			<font size=3>0.00</font>
+		</td>
+	</tr>
+	<tr>
+		<td class="" colspan=2 height="20" align="left">
+			<font>Employee's first name and initial</font>
+		</td>
+		<td class="" colspan=2 align="left">
+			<font>Last name</font>
+		</td>
+		<td class="border-right" align="left">
+			<font>Stuff.</font>
+		</td>
+		<td class="border-right" colspan=4 align="left">
+			<font>11. Nonqualified plans</font>
+		</td>
+		<td class="" colspan=3 align="left">
+			<font>12a </font>
+		</td>
+	</tr>
+	<tr>
+		<td class="" colspan="2" height="21" align="left">
+			<font size=3>{{empFirstName}}</font>
+		</td>
+		<td align="left" colspan="2">
+			<font size=3>{{empLastName}}</font>
+		</td>
+		<td class="border-right" align="left">
+			<font><br></font>
+		</td>
+		<td class="border-right border-bottom" colspan=4 align="center" sdval="0" sdnum="1033;0;#,##0.00">
+			<font size=3>0.00</font>
+		</td>
+		<td class="border-bottom border-right" colspan="1" align="left">
+			<font><br></font>
+		</td>
+		<td class="border-bottom " colspan="2" align="left">
+			<font><br></font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-right v-top" colspan=5 rowspan="6" height="21" align="top">
+			<font size=4>{{empStreetAddress}} <br><br> {{empZipCode}}</font>
+		</td>
+		<td class="" align="left" sdval="13" sdnum="1033;">
+			<font>13</font>
+		</td>
+		<td class="" align="left">
+			<font>Satisfactory Employe</font>
+		</td>
+		<td class="" align="left">
+			<font>Retirement Plan</font>
+		</td>
+		<td class="border-right " align="left">
+			<font>Third-party Sick pay</font>
+		</td>
+		<td class="" align="left">
+			<font>12b</font>
+		</td>
+		<td class="" colspan="2" align="left">
+			<font><br></font>
+		</td>
+	</tr>
+	<tr>
+		<!-- <td class="" colspan=5 height="21" align="left">
+			<font size=4>Staten Island, NY 10301</font>
+		</td> -->
+		<td class="border-bottom" align="left">
+			<font><br></font>
+		</td>
+		<td class="border-bottom" align="left">
+			<font><br>
+			</font>
+		</td>
+		<td class="border-bottom" align="left">
+			<font><br>
+			</font>
+		</td>
+		<td class="border-bottom border-right" align="left">
+			<font><br>
+			</font>
+		</td>
+		<td class="border-right border-bottom" align="left">
+			<font><br></font>
+		</td>
+		<td class="border-bottom" colspan="2" align="left">
+			<font><br></font>
+		</td>
+	</tr>
+	<tr>
+		<!-- <td class="" colspan="5" rowspan="4" height="20" align="left">
+			<font><br></font>
+		</td> -->
+		<td class="" align="left">
+			<font>14. Other</font>
+		</td>
+		<td class="border-right" align="left" colspan="3">
+			<font><br></font>
+		</td>
+
+		<td class="" align="left">
+			<font>12c</font>
+		</td>
+
+		<td class="" colspan="2" align="left">
+			<font><br></font>
+		</td>
+	</tr>
+	<tr>
+		<!-- <td class="" colspan="5" height="20" align="left">
+			<font><br></font>
+		</td> -->
+		<td class="border-right" colspan="4" align="left">
+			<font><br></font>
+		</td>
+		<td class="border-right" colspan="1" align="left">
+			<font><br></font>
+		</td>
+		<td class="" colspan="2" align="left">
+			<font><br></font>
+		</td>
+		
+	</tr>
+	<tr>
+		<!-- <td class="border-right" colspan="5" rowspan="2" height="20" align="left">
+			<font><br></font>
+		</td> -->
+
+		<td class="border-right" colspan="4" align="left">
+			<font><br></font>
+		</td>
+		<td class="border-top" align="left">
+			<font>12d</font>
+		</td>
+		<td class="border-top" colspan="2" align="left">
+			<font><br></font>
+		</td>
+
+		
+	</tr>
+	<tr>
+		<!-- <td class="border-right" colspan="5" height="20" align="left">
+			<font><br></font>
+		</td> -->
+		<td class="border-right" colspan="4" align="left">
+			<font><br></font>
+		</td>
+		<td class="border-right" colspan="1" align="left">
+			<font><br></font>
+		</td>
+		<td class="" colspan="2" align="left">
+			<font><br></font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-bottom" colspan="2" height="20" align="left">
+			<font>f. Employee's address and ZIP code</font>
+		</td>
+		<td class="border-bottom border-right" colspan="3" align="left">
+			<font><br></font>
+		</td>
+		<td class="border-bottom border-right" colspan="4" align="left">
+			<font><br></font>
+		</td>
+		<td class="border-bottom border-top" colspan="3" align="left" bgcolor="#b3b3b3"> <!-- bgcolor="#E7E6E6" -->
+			<font><br></font>
+		</td>
+	</tr>
+	<tr>
+		<td class="" height="20" align="left">
+			<font>15 State</font>
+		</td>
+		<td class="border-right " align="left">
+			<font>Employer's state ID number</font>
+		</td>
+		<td class="border-right" colspan=2 align="left">
+			<font>16 State wages, tips, etc</font>
+		</td>
+		<td class="border-right" colspan=2 align="left">
+			<font>17 State income tax</font>
+		</td>
+		<td class="border-right" colspan=2 align="left">
+			<font>18 Local wages, tips, etc.</font>
+		</td>
+		<td class="border-right" colspan=2 align="left">
+			<font>19 Local wages, tips, etc.</font>
+		</td>
+		<td class="" colspan=2 align="left">
+			<font>20 Locality name</font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-right " height="21" align="center">
+			<font size=3>{{location}}</font>
+		</td>
+		<td class="border-right " align="left">
+			<font size=3>{{stateIDNumber}}</font>
+		</td>
+		<td class="border-right" colspan=2 align="center" sdval="500000" sdnum="1033;0;#,##0.00">
+			<font size=3>{{annualSalary}}	</font>
+		</td>
+		<td class="border-right" colspan=2 align="center" sdval="35741.43" sdnum="1033;0;#,##0.00">
+			<font size=3>{{#if showhidestate}} {{stateTax}} {{else}} 0.00 {{/if}}</font>
+		</td>
+		<td class="border-right" colspan=2 align="center" sdval="0" sdnum="1033;0;#,##0.00">
+			<font size=3>0.00</font>
+		</td>
+		<td class="border-right" colspan=2 align="center" sdval="0" sdnum="1033;0;#,##0.00">
+			<font size=3>0.00</font>
+		</td>
+		<td class="" colspan=2 align="center" sdnum="1033;0;#,##0.00">
+			<font size=3><br></font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-dotted-top" height="20" align="left">
+			<font size=3>{{empState}}</font>
+		</td>
+		<td class="border-dotted-top" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="border-dotted-top" colspan="2" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="border-dotted-top" colspan="2" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="border-dotted-top" colspan="2" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="border-dotted-top" colspan="2" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="border-dotted-top" colspan="2" align="left">
+			<font size=3><br></font>
+		</td>
+	</tr>
+	<tr>
+		<td class="border-right" height="20" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="" colspan="2" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="" colspan="2" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="" colspan="2" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="" colspan="2" align="left">
+			<font size=3><br></font>
+		</td>
+		<td class="" colspan="2" align="left">
+			<font size=3><br></font>
+		</td>
+	</tr>
+
+</tbody>
+
+</table>
+
+<table>
+	<tbody>
+		<tr>
+			<td colspan="2" rowspan="5" height="10" align="right" valign="top">
+				<h1 style="font-size:50px;"> <small style="font-size:x-small">FORM</small> W-2</h1>
+			</td>
+				<td colspan="2" height="10" align="left" valign="center">
+				<small style="font-size: 25px;">Wage <br> and <br> Tax Statement</small>
+				<p align="left" valign="bottom"></p>
+			</td>
+			<td colspan="4" height="10" align="left" valign="middle">
+				<h1 style="font-size:30px;"> {{companyTaxYear}}</h1>
+			</td>
+			<td colspan="4" height="10" align="left" valign="bottom"></td>
+		</tr>
+
+		<tr>
+			<td height="10" align="middle" valign="bottom">
+				<br>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<!-- ************************************************************************** -->
+</body>
+
+</html>

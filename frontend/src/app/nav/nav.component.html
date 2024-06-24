@@ -1,0 +1,25 @@
+<nav class="nav-menu d-none d-lg-block">
+    <ul>
+        <li [class]="activeHome" (click)="activeNav('home')"><a routerLink="/">Home</a></li>
+        <li class="drop-down body-overlay" (click)="activeNav('pay-stub')"><a href="#">Pay Stubs</a>
+            <ul>
+                <button routerLink="create-stub" class="btn nav_create-paystub-btn">Create Paystub</button>
+                <li><a routerLink="/">Pay Stubs Information</a></li>
+                <li><a routerLink="stub-samples">Stub Samples</a></li>
+                <li><a routerLink="stub-faq">FAQ</a></li>
+            </ul>
+        </li>
+        <li class="drop-down body-overlay" (click)="activeNav('w2-form')"><a href="#">W2 Form</a>
+            <ul>
+                <button routerLink="w2-form" class="btn nav_create-w2-btn">Create W2 Form</button>
+                <li><a routerLink="w2-creator">W2 Form Information</a></li>
+                <!--<li><a routerLink="w2-samples">W2 Samples</a></li>-->
+                <li><a routerLink="w2-faq">FAQ</a></li>
+            </ul>
+        </li>
+
+        <li [class]="activeReview" (click)="activeNav('review')"><a routerLink="reviews">Reviews</a></li>
+        <li [class]="activeContact" (click)="activeNav('contact')"><a routerLink="contact-us">Contact Us</a></li>
+    </ul>
+</nav>
+<!-- .nav-menu -->

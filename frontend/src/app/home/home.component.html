@@ -1,0 +1,320 @@
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+      <h1>Easy Online Pay Stub Generator</h1>
+      <h3>Fill, submit, download and print instantly. No software needed!</h3>
+    </div>
+  </section><!-- End Hero -->
+  
+  <main id="main" class="home">
+  
+    <!-- ======= About Section ======= -->
+    <section id="form" class="form">
+      <div class="container" data-aos="fade-up">
+        <form method="POST" class="" id="" action="" [formGroup]="homeForm" (ngSubmit)="onSubmit()">
+          <div class="row p-0 justify-content-end">
+  
+            <div class="col-lg-4 pl-lg-5 pr-lg-5 col-md-5 col-6 d-md-flex align-items-md-stretch">
+              <div class="form-box">
+                <div class="form-question">
+                  <h5>
+                    How are you paid? 
+                    <span class="help-tooltip" container="body" ngbPopover="Select 'Salaried' if you earn a fixed salary over a specific time period. Select 'Hourly' if you get paid based on the hours worked." triggers="mouseenter:mouseleave"></span>
+                  </h5>
+                </div>
+                <div class="form-radio">
+                  <input type="radio" name="paid" value="salary" id="salaried" formControlName="paid" (change)="onChange('paid')">
+                  <label for="salaried">Salaried</label>
+                </div>
+                <div class="form-radio">
+                  <input type="radio" name="paid" value="hourly" id="hourly" formControlName="paid" (change)="onChange('paid')">
+                  <label for="hourly">Hourly</label>
+                </div>
+  
+              </div>
+            </div>
+  
+            <div class="col-lg-4 pl-lg-5 pr-lg-5 col-md-5 col-6 d-md-flex align-items-md-stretch">
+              <div class="form-box">
+                <div class="form-question">
+                  <h5>
+                    Employment status
+                    <span class="help-tooltip" container="body" ngbPopover="Select 'Employee' if you work within a business and the company covers your taxes. Select 'Contractor' if you work independently and you are responsible of paying your taxes." triggers="mouseenter:mouseleave"></span>
+                  </h5>
+                </div>
+                <div class="form-radio">
+                  <input type="radio" name="status" value="employee" id="employee" formControlName="status" (change)="onChange('status')">
+                  <label for="employee">Employee</label>
+                </div>
+                <div class="form-radio">
+                  <input type="radio" name="status" value="contractor" id="contractor" formControlName="status" (change)="onChange('status')">
+                  <label for="contractor">Contractor</label>
+                </div>
+  
+              </div>
+            </div>
+  
+            <div class="col-lg-4 pl-lg-5 pr-lg-5 col-md-5 col-6 d-md-flex align-items-md-stretch">
+              <div class="form-box BR-none">
+                <div class="form-question">
+                  <h5>Select your state</h5>
+                </div>
+  
+                <div class="form-select-state">
+                  <select formControlName="state" (change)="onChange('state')">
+                      <option value="alabama">Alabama</option>
+                      <option value="alaska">Alaska</option>
+                      <option value="arizona">Arizona</option>
+                      <option value="arkansas">Arkansas</option>
+                      <option value="california">California</option>
+                      <option value="colorado">Colorado</option>
+                      <option value="connecticut">Connecticut</option>
+                      <option value="delaware">Delaware</option>
+                      <option value="florida">Florida</option>
+                      <option value="georgia">Georgia</option>
+                      <option value="hawaii">Hawaii</option>
+                      <option value="idaho">Idaho</option>
+                      <option value="illinois">Illinois</option>
+                      <option value="indiana">Indiana</option>
+                      <option value="iowa">Iowa</option>
+                      <option value="kansas">Kansas</option>
+                      <option value="kentucky">Kentucky</option>
+                      <option value="louisiana">Louisiana</option>
+                      <option value="maine">Maine</option>
+                      <option value="maryland">Maryland</option>
+                      <option value="massachusetts">Massachusetts</option>
+                      <option value="michigan">Michigan</option>
+                      <option value="minnesota">Minnesota</option>
+                      <option value="mississippi">Mississippi</option>
+                      <option value="missouri">Missouri</option>
+                      <option value="montana">Montana</option>
+                      <option value="nebraska">Nebraska</option>
+                      <option value="nevada">Nevada</option>
+                      <option value="new_hampshire">New Hampshire</option>
+                      <option value="new_jersey">New Jersey</option>
+                      <option value="new_mexico">New Mexico</option>
+                      <option value="new_york">New York</option>
+                      <option value="north_carolina">North Carolina</option>
+                      <option value="north_dakota">North Dakota</option>
+                      <option value="ohio">Ohio</option>
+                      <option value="oklahoma">Oklahoma</option>
+                      <option value="oregon">Oregon</option>
+                      <option value="pennsylvania">Pennsylvania</option>
+                      <option value="rhode_island">Rhode Island</option>
+                      <option value="south_carolina">South Carolina</option>
+                      <option value="south_dakota">South Dakota</option>
+                      <option value="tennessee">Tennessee</option>
+                      <option value="texas">Texas</option>
+                      <option value="utah">Utah</option>
+                      <option value="virginia">Virginia</option>
+                      <option value="washington">Washington</option>
+                      <option value="west_virginia">West Virginia</option>
+                      <option value="wisconsin">Wisconsin</option>
+                      <option value="wyoming">Wyoming</option>
+                      <option value="vermont">Vermont</option>
+                      <option value="district_of_columbia">District Of Columbia</option>
+                  </select>
+                </div>
+  
+              </div>
+            </div>
+  
+          </div>
+  
+          <div class="row">
+            <div class="form-bottom">
+              <!-- <button class="form-next-btn" type="submit">Create Your Pay Stub Now</button> -->
+              <a routerLink="/create-stub" class="form-next-btn">
+                Create Your Pay Stub Now
+              </a>
+              <div class="preview-link">
+                <a routerLink="/stub-samples">Preview stub samples</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section><!-- End About Section -->
+  
+    <!-- ======= GetPayStubs Section ======= -->
+    <section id="GetPayStubs" class="common-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 section-heading">
+            <h2>What is GetPayStubs?</h2>
+            <p>GetPayStubs is an online check stub maker built by professional accountants, ensuring accurate
+              calculations and instant delivery. No subscription required, no software to download, and no extra hidden
+              fees.</p>
+          </div>
+          <div class="col-lg-12 section-heading">
+            <h2>How It Works</h2>
+            <p class="mb-4">The process is straightforward and trouble-free. Fill the required information about the employee,
+              employer, salary and pay period. The calculations will be done immediately, to have your paycheck stub
+              ready to download and print.</p>
+          </div>
+        </div>
+      </div>
+    </section><!-- End GetPayStubs Section -->
+  
+    <!-- ======= steps Section ======= -->
+    <section id="steps" class="steps mt-4">
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-lg-4 col-md-4 col-sm-6 d-md-flex align-items-md-stretch">
+            <div class="step-box step-01">
+              <img class="" src="assets/media/icons/enter-your-information.svg" />
+              <p>Enter your<br> information</p>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-4 col-sm-6 d-md-flex align-items-md-stretch">
+            <div class="step-box step-02">
+              <img class="" src="assets/media/icons/preview-your-stub.svg" />
+              <p>Preview<br> your stub</p>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-4 col-sm-6 d-md-flex align-items-md-stretch">
+            <div class="step-box step-03">
+              <img class="" src="assets/media/icons/download-your-stub.svg" />
+              <p>Download<br> your stub</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End steps Section -->
+  
+    <!-- ======= blog heading Section ======= -->
+    <section id="blog-heading" class="common-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 section-heading">
+            <h2>Latest Tax-Related Articles From Our Blog</h2>
+            <p>When it comes to taxation and proof of income updates, our blog is the answer. Find out the latest tips
+              and tricks, enhance your financial knowledge by browsing our articles.</p>
+          </div>
+        </div>
+      </div>
+    </section><!-- End blog heading Section -->
+  
+    <!-- ======= blog Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <article class="blog-box">
+              <div class="blog-img">
+                <img src="assets/media/blog-01.jpg" alt="" class="img-fluid">
+              </div>
+              <h3 class="blog-title">The Most Prolific W2 Scams Explained - And How to Avoid Them</h3>
+              <div class="blog-content">
+                <p>Is your business vulnerable to W2 scams? Have you recently rece...</p>
+                <div class="read-more">
+                  <a href="#">Read More</a>
+                </div>
+              </div>
+            </article>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <article class="blog-box">
+              <div class="blog-img">
+                <img src="assets/media/blog-02.jpeg" alt="" class="img-fluid">
+              </div>
+              <h3 class="blog-title">The Most Prolific W2 Scams Explained - And How to Avoid Them</h3>
+              <div class="blog-content">
+                <p>Is your business vulnerable to W2 scams? Have you recently rece...</p>
+                <div class="read-more">
+                  <a href="#">Read More</a>
+                </div>
+              </div>
+            </article>
+          </div>
+  
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <article class="blog-box">
+              <div class="blog-img">
+                <img src="assets/media/blog-03.jpeg" alt="" class="img-fluid">
+              </div>
+              <h3 class="blog-title">The Most Prolific W2 Scams Explained - And How to Avoid Them</h3>
+              <div class="blog-content">
+                <p>Is your business vulnerable to W2 scams? Have you recently rece...</p>
+                <div class="read-more">
+                  <a href="#">Read More</a>
+                </div>
+              </div>
+            </article>
+          </div>
+  
+  
+  
+        </div>
+      </div>
+    </section><!-- End blog Section -->
+  
+    <!-- ======= Added value Section ======= -->
+    <section id="added-value" class="common-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 section-heading">
+            <h2>The Added Value</h2>
+            <p>To help you keep record of your income, the generated stub is automatically e-mailed to you, once the
+              preview phase is done. Our calculations are error-free, and the whole process takes you less than 2
+              minutes!</p>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Added value Section -->
+  
+    <!-- ======= home contact Section ======= -->
+    <section id="home-contact" class="home-contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 pl-md-0 contact-us">
+            <h2>Are you having any issues?</h2>
+            <p>Fill out our contact form, and we will get back to you as soon as we can!</p>
+            <a href="#">Contact us</a>
+  
+          </div>
+  
+          <div class="col-lg-6 col-md-12 pr-md-0 resend">
+  
+            <h2>Did you lose your order?</h2>
+            <p>Don’t worry! You can resend it your order for free.</p>
+            <a href="#">Resend Your Order</a>
+          </div>
+        </div>
+      </div>
+    </section><!-- End home contact Section -->
+  
+    <!-- ======= Assurance Section ======= -->
+    <section id="assurance" class="assurance">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="assurance-box">
+              <img src="assets/media/icons/moneyback.svg">
+              <p>100% Money back <br> <span>guaranteed for 30 days</span></p>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="assurance-box">
+              <img src="assets/media/icons/security.svg">
+              <p>100% security <br> <span>secure payment method</span></p>
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-5 col-6 d-md-flex align-items-md-stretch">
+            <div class="assurance-box">
+              <img src="assets/media/icons/satisfaction.svg">
+              <p>100% satisfaction<br><span>we care about your satisfaction</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </section><!-- End assurance Section -->
+  
+  </main><!-- End #main -->
+  

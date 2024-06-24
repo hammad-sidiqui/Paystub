@@ -1,0 +1,71 @@
+<main id="main" class="inner-page">
+
+    <!-- ======= Resend Your Order title Section ======= -->
+    <section id="" class="common-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 inner-page-title">
+            <h2>Resend Your Order</h2>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Resend Your Order title Section -->
+  
+    <!-- ======= Resend Your Order Section ======= -->
+    <section id="resend-your-order" class="resend-your-order content-box">
+      <div class="container" data-aos="fade-up">
+        <div class="row pt-5">
+          <div class="col-lg-10 offset-lg-1">
+            <div class="">
+              <p class="mb-4 mt-4">If you have not received your order, fill out the form below and your order will be
+                resent to your email address</p>
+            </div>
+            <div class="col-lg-6 pl-lg-0 float-left">
+              <div>
+                <form class="needs-validation " method="post" novalidate id="" action="" [formGroup]="orderResendForm">
+                  <div class="row">
+    
+                    <div class="col-lg-12 col-md-12 mb-2">
+                      <div class="form-group">
+                        <select id="Forms" class="form-control custom-select" formControlName="form">
+                          <option value="paystub">PayStub Form</option>
+                          <option value="w2">W2 Form</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 mb-2">
+                      <div class="form-group validate-me">
+                        <label for="EMail-Used">E-Mail Used<span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="EMail-Used" formControlName="email">
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-12 col-md-12 mb-2">
+                      <div class="form-group validate-me">
+                        <label for="Employee-SSN">Last 4 Digits Of The Employee SSN<span class="mandatory">*</span></label>
+                        <input type="text" class="form-control" id="Employee-SSN" mask="AAA-AA-AAAA" [showMaskTyped]="maskEmpSsn" (focus)="empSsnDefault()" (focusout)="maskEmpSsn = false" placeholder="XXX-XX-____" formControlName="employeeSSN">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 mb-5">
+                      <div class="form-group text-right">
+                        <button type="submit" class="primary-btn">Resend Your Order</button>
+                      </div>
+                    </div>
+    
+                  </div>
+                </form> 
+              </div>
+  
+            </div>
+  
+          </div>
+        </div>
+  
+      </div>
+  
+    </section><!-- End Resend Your Order Section -->
+  
+  </main><!-- End #main -->
+  

@@ -1,0 +1,871 @@
+<main id="main" class="createstub">
+
+    <!-- ======= Create your pay stub Section ======= -->
+    <section id="create-your-paystub" class="common-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 createstub-title">
+            <h2>Create your W-2 Form</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Create your pay stub Section -->
+  
+    <!-- ======= createstub-form Section ======= -->
+    <section id="createstub-form" class="">
+      <div class="container" data-aos="fade-up">
+        <form class="needs-validation " method="post" novalidate id="" action="" [formGroup]="w2Form"
+          (ngSubmit)="onSubmit()">
+          <div class="row form-group p-0">
+            <div class="col-lg-3 p-0">
+                <ul id="sticky-steps" class="nav nav-pills flex-column nav-justified thumbnail setup-panel">
+                <li class="createstub-step"
+                  [ngClass]="{'active': showStep_1, 'step-completed': (completeStep_1 && !showStep_1)}"
+                  (click)="showTab(completeStep_1, '1')">
+                  <a href="#step-1">
+                      <span class="step-number">1</span>
+                    <h4 class="step">Step 1</h4>
+                    <p class="step-title">Company Information</p>
+                  </a>
+                  <hr />
+                </li>
+                <li class="createstub-step"
+                  [ngClass]="{'active': showStep_2, 'step-completed': (completeStep_2 && !showStep_2), 'disabled': !completeStep_1}"
+                  (click)="showTab(completeStep_1, '2')">
+                  <a href="#step-2">
+                      <span class="step-number">2</span>
+                    <h4 class="step">Step 2</h4>
+                    <p class="step-title">Employee Information</p>
+                  </a>
+                  <hr />
+                </li>
+                <li class="createstub-step"
+                  [ngClass]="{'active': showStep_3, 'step-completed': (completeStep_3 && !showStep_3), 'disabled': !completeStep_2}"
+                  (click)="showTab(completeStep_2, '3')">
+                  <a href="#step-3">
+                    <span class="step-number">3</span>
+                    <h4 class="step">Step 3</h4>
+                    <p class="step-title">More Information</p>
+                  </a>
+                  <hr />
+                </li>
+                <li class="createstub-step"
+                  [ngClass]="{'active': showStep_4, 'step-completed': (completeStep_4 && !showStep_4), 'disabled': !completeStep_3}"
+                  (click)="showTab(completeStep_3, '4')">
+                  <a href="#step-4">
+                      <span class="step-number">4</span>
+                    <h4 class="step">Step 4</h4>
+                    <p class="step-title">Preview Your Stub</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          <div class="col-lg-9" style="box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);background: #fff;"> 
+          <div *ngIf="showStep_1" class="row createstub-content" id="step-1">
+            <div class="col-lg-12">
+              <div class="col-md-12 mb-5">
+                <h2 class="title">Company Information</h2>
+              </div>
+              <div class="col-md-12">
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="TaxYear">Tax Year<span class="mandatory">*</span></label>
+                      <select class="form-control custom-select" id="taxyear" formControlName="companyTaxYear" required>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                        <option value="2014">2014</option>
+                        <option value="2013">2013</option>
+                      </select>
+                      <div *ngIf="companySubmitted && w2Form.controls.companyTaxYear.errors" class="error">
+                        <div *ngIf="w2Form.controls.companyTaxYear.errors.required">
+                          Tax year is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="EmployerIdentificationNumber">Employer Identification Number<span
+                          class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="EmployerIdentificationNumber"
+                        placeholder="This field is mandatory" formControlName="employerIdentificationNumber" required>
+                      <div *ngIf="companySubmitted && w2Form.controls.employerIdentificationNumber.errors" class="error">
+                        <div *ngIf="w2Form.controls.employerIdentificationNumber.errors.required">
+                          Employer identification number is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="BusinessName">Business Name<span class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="BusinessName" placeholder="This field is mandatory"
+                        formControlName="businessName" required>
+                      <div *ngIf="companySubmitted && w2Form.controls.businessName.errors" class="error">
+                        <div *ngIf="w2Form.controls.businessName.errors.required">
+                          Business name is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="StreetAddress">Street Address<span class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="StreetAddress" placeholder="Ex. 3305 Mt. Vernon Ct."
+                        formControlName="companyStreetAddress" required>
+                      <div *ngIf="companySubmitted && w2Form.controls.companyStreetAddress.errors" class="error">
+                        <div *ngIf="w2Form.controls.companyStreetAddress.errors.required">
+                          Steet address is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="ZipCode">Zip Code<span class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="ZipCode" minlength="5" maxlength="5"
+                        placeholder="Ex. 98225" formControlName="companyZipCode" required numbersOnly>
+                      <div *ngIf="companySubmitted && w2Form.controls.companyZipCode.errors" class="error">
+                        <div *ngIf="w2Form.controls.companyZipCode.errors">
+                          Zip code must be in integar and length should be 5
+                        </div>
+                      </div>
+                      <div *ngIf="companySubmitted && !showLocation && !w2Form.controls.companyZipCode.errors" class="error">
+                        Zip code is invalid
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="showLocation" class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="Location">Location (Optional)</label>
+                      <input type="text" class="form-control" id="Location" placeholder="Ex. 3305 Mt. Vernon Ct." formControlName="location">
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group">
+                      <label for="ControlNumber">Control Number (Optional)</label>
+                      <input type="text" class="form-control" id="ControlNumber" formControlName="controlNumber">
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group">
+                      <label for="StateIDNumber">State ID Number (Optional)</label>
+                      <input type="text" class="form-control" id="StateIDNumber" formControlName="stateIDNumber">
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-5">
+                  <div class="col-lg-12 col-md-12 text-center nexStep">
+                    <button type="submit" href="#step-2" id="activate-step-2" (click)="handleCompanyInfo()"
+                      class="btn nextStep-btn nextBtn">Employee information</button>
+                    <p>You can always go back to the previous step to edit your information!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf="showStep_2" class="row createstub-content" id="step-2">
+            <div class="col-lg-12">
+              <div class="col-md-12 mb-5">
+                <h2 class="title">Employee Information</h2>
+              </div>
+              <div class="col-md-12">
+  
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="FirstName">First Name<span class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="EmployeeName" placeholder="Enter first name"
+                        formControlName="employeeFirstName" required>
+                      <div *ngIf="employeeSubmitted && w2Form.controls.employeeFirstName.errors" class="error">
+                        <div *ngIf="w2Form.controls.employeeFirstName.errors.required">
+                          First name is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="LastName">Last Name<span class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="EmployeeName" placeholder="Enter last name"
+                        formControlName="employeeLastName" required>
+                      <div *ngIf="employeeSubmitted && w2Form.controls.employeeLastName.errors" class="error">
+                        <div *ngIf="w2Form.controls.employeeLastName.errors.required">
+                          Last name is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="SocialSecurityNumber">Social Security Number<span
+                          class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="SocialSecurityNumber" mask="000-00-0000" [showMaskTyped]="maskEmpSsn" (focus)="maskEmpSsn = true" (focusout)="maskEmpSsn = false" placeholder="xxx-xx-1234" minlength="9" maxlength="12" formControlName="socialSecurityNumber" required>
+                      <div *ngIf="employeeSubmitted && w2Form.controls.socialSecurityNumber.errors" class="error">
+                        <div *ngIf="w2Form.controls.socialSecurityNumber.errors">
+                          Social security number is required and length should be 9
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="StreetAddress">Street Address<span class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="StreetAddress" placeholder="Ex. 3305 Mt. Vernon Ct."
+                        formControlName="employeeStreetAddress" required>
+                      <div *ngIf="employeeSubmitted && w2Form.controls.employeeStreetAddress.errors" class="error">
+                        <div *ngIf="w2Form.controls.employeeStreetAddress.errors.required">
+                          Street address is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="chooseState">State<span class="mandatory">*</span></label>
+                      <select class="form-control custom-select" id="chooseState" formControlName="employeeState"
+                        required>
+                        <option> </option>
+                        <option value="alabama">Alabama</option>
+                        <option value="alaska">Alaska</option>
+                        <option value="arizona">Arizona</option>
+                        <option value="arkansas">Arkansas</option>
+                        <option value="california">California</option>
+                        <option value="colorado">Colorado</option>
+                        <option value="connecticut">Connecticut</option>
+                        <option value="delaware">Delaware</option>
+                        <option value="florida">Florida</option>
+                        <option value="georgia">Georgia</option>
+                        <option value="hawaii">Hawaii</option>
+                        <option value="idaho">Idaho</option>
+                        <option value="illinois">Illinois</option>
+                        <option value="indiana">Indiana</option>
+                        <option value="iowa">Iowa</option>
+                        <option value="kansas">Kansas</option>
+                        <option value="kentucky">Kentucky</option>
+                        <option value="louisiana">Louisiana</option>
+                        <option value="maine">Maine</option>
+                        <option value="maryland">Maryland</option>
+                        <option value="massachusetts">Massachusetts</option>
+                        <option value="michigan">Michigan</option>
+                        <option value="minnesota">Minnesota</option>
+                        <option value="mississippi">Mississippi</option>
+                        <option value="missouri">Missouri</option>
+                        <option value="montana">Montana</option>
+                        <option value="nebraska">Nebraska</option>
+                        <option value="nevada">Nevada</option>
+                        <option value="new_hampshire">New Hampshire</option>
+                        <option value="new_jersey">New Jersey</option>
+                        <option value="new_mexico">New Mexico</option>
+                        <option value="new_york">New York</option>
+                        <option value="north_carolina">North Carolina</option>
+                        <option value="north_dakota">North Dakota</option>
+                        <option value="ohio">Ohio</option>
+                        <option value="oklahoma">Oklahoma</option>
+                        <option value="oregon">Oregon</option>
+                        <option value="pennsylvania">Pennsylvania</option>
+                        <option value="rhode_island">Rhode Island</option>
+                        <option value="south_carolina">South Carolina</option>
+                        <option value="south_dakota">South Dakota</option>
+                        <option value="tennessee">Tennessee</option>
+                        <option value="texas">Texas</option>
+                        <option value="utah">Utah</option>
+                        <option value="virginia">Virginia</option>
+                        <option value="washington">Washington</option>
+                        <option value="west_virginia">West Virginia</option>
+                        <option value="wisconsin">Wisconsin</option>
+                        <option value="wyoming">Wyoming</option>
+                        <option value="vermont">Vermont</option>
+                        <option value="district_of_columbia">District Of Columbia</option>
+                      </select>
+                      <div *ngIf="employeeSubmitted && w2Form.controls.employeeState.errors" class="error">
+                        <div *ngIf="w2Form.controls.employeeState.errors.required">
+                          State is required
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="ZipCode">Zip Code<span class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="zipCode" placeholder="Ex. 98225" minlength="5"
+                        maxlength="5" formControlName="employeeZipCode" required numbersOnly>
+                      <div *ngIf="employeeSubmitted && w2Form.controls.employeeZipCode.errors" class="error">
+                        <div *ngIf="w2Form.controls.employeeZipCode.errors.required">
+                          Zip code must be in integar and length should be 5
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group">
+                      <label for="Dependants">No. of Dependants (Optional)</label>
+                      <select class="form-control custom-select" id="Dependants" formControlName="noOfDependants">
+                        <option value="SelectOption">Select an option</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="9+">9+</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group">
+                      <label for="Exemtions">No. of Exemptions (Optional)</label>
+                      <select class="form-control custom-select" id="exemptions" formControlName="noOfExemptions">
+                        <option value="SelectOption">Select an option</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="9+">9+</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="AnnualSalary">Annual Salary<span class="mandatory">*</span></label>
+                      <input type="text" class="form-control" id="AnnualSalary" placeholder="Ex. 98225"
+                        formControlName="annualSalary" required numbersOnly>
+                      <div *ngIf="employeeSubmitted && w2Form.controls.annualSalary.errors" class="error">
+                        <div *ngIf="w2Form.controls.annualSalary.errors.required">
+                          Annual salary is required and must be in integer
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row mt-5">
+                  <div class="col-lg-12 col-md-12 text-center nexStep">
+                    <button type="submit" href="#step-3" id="activate-step-3" (click)="handleEmployeeInfo()"
+                      class="btn nextStep-btn">More information</button>
+                    <p>You can always go back to the previous step to edit your information!</p>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf="showStep_3" class="row createstub-content" id="step-3">
+            <div class="col-lg-12">
+  
+              <div class="col-md-12 mb-5">
+                <h2 class="title">More Information</h2>
+              </div>
+  
+              <div class="col-md-12">
+  
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group">
+                      <div class="form-checkbox">
+                        <input type="checkbox" class="StatutoryEmployee" id="StatutoryEmployee" value="1"
+                          formControlName="statutoryEmployee">
+                        <label for="StatutoryEmployee">Statutory Employee</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group ">
+                      <div class="form-checkbox">
+                        <input type="checkbox" class="RetirementPlan" id="RetirementPlan" value="1"
+                          formControlName="retirementPlan">
+                        <label for="RetirementPlan">Retirement Plan</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group ">
+                      <div class="form-checkbox">
+                        <input type="checkbox" class="ThirdPartySickPay" id="ThirdPartySickPay" value="1"
+                          formControlName="thirdPartySickPay">
+                        <label for="ThirdPartySickPay">Third-Party Sick Pay</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row m-0">
+                  <div class="col-lg-5 col-md-12 pl-0 mb-3">
+                    <div class="col-lg-6 col-md-12 float-left pl-0 pr-2">
+                      <div class="form-group">
+                        <select class="form-control custom-select" id="TaxCode12a" formControlName="taxCode12a"
+                          (change)="taxCode($event.target.value, '12a')">
+                          <option value="">Tax Code (12a)</option>
+                          <option value="A">Code A—Uncollected social security or RRTA tax on tips</option>
+                          <option value="B">Code B—Uncollected Medicare tax on tips</option>
+                          <option value="C">Code C—Taxable cost of group-term life insurance over $50,000</option>
+                          <option value="D">Code D—Elective deferrals under a section 401(k) cash or deferred arrangement
+                            (plan)</option>
+                          <option value="E">Code E—Elective deferrals under a section 403(b) salary reduction agreement
+                          </option>
+                          <option value="F">Code F—Elective deferrals under a section 408(k)(6) salary reduction SEP
+                          </option>
+                          <option value="G">Code G—Elective deferrals and employer contributions (including nonelective
+                            deferrals) to any governmental or nongovernmental section 457(b) deferred compensation plan
+                          </option>
+                          <option value="H">Code H—Elective deferrals under section 501(c)(18)(D) tax-exempt organization
+                            plan</option>
+                          <option value="J">Code J—Nontaxable sick pay</option>
+                          <option value="K">Code K—20% excise tax on excess golden parachute payments (not applicable to
+                            Forms W-2AS, W-2CM, W-2GU, or W-2VI)</option>
+                          <option value="L">Code L—Substantiated employee business expense reimbursements</option>
+                          <option value="M">Code M—Uncollected social security or RRTA tax on taxable cost of group-term
+                            life insurance over $50,000 (for former employees)</option>
+                          <option value="N">Code N—Uncollected Medicare tax on taxable cost of group-term life insurance
+                            over $50,000 (for former employees)</option>
+                          <option value="P">Code P—Excludable moving expense reimbursements paid directly to employee
+                          </option>
+                          <option value="Q">Code Q—Nontaxable combat pay</option>
+                          <option value="R">Code R—Employer contributions to an Archer MSA</option>
+                          <option value="S">Code S—Employee salary reduction contributions under a section 408(p) SIMPLE
+                            plan</option>
+                          <option value="T">Code T—Adoption benefits</option>
+                          <option value="V">Code V—Income from the exercise of nonstatutory stock option(s)</option>
+                          <option value="W">Code W—Employer contributions to a health savings account (HSA)</option>
+                          <option value="Y" selected="selected">Code Y—Deferrals under a section 409A nonqualified
+                            deferred compensation plan</option>
+                          <option value="Z">Code Z—Income under a nonqualified deferred compensation plan that fails to
+                            satisfy section 409A</option>
+                          <option value="AA">Code AA—Designated Roth contributions under a section 401(k) plan</option>
+                          <option value="BB">Code BB—Designated Roth contributions under a section 403(b) plan</option>
+                          <option value="CC">Code CC—HIRE exempt wages and tips (2010 only)</option>
+                          <option value="DD">Code DD—Cost of employer-sponsored health coverage</option>
+                          <option value="EE">Code EE—Designated Roth contributions under a governmental section 457(b)
+                            plan</option>
+                          <option value="FF">Code FF—Permitted benefits under a qualified small employer health
+                            reimbursement arrangement</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 float-left pl-2 pr-0">
+                      <div class="form-group validate-me">
+                        <input type="text" class="form-control" id="amount" placeholder="Amount"
+                          formControlName="amountTaxCode12a" numbersOnly [required]="taxCode12a">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row m-0">
+                  <div class="col-lg-5 col-md-12 pl-0 mb-3">
+  
+                    <div class="col-lg-6 col-md-12 float-left pl-0 pr-2">
+                      <div class="form-group">
+                        <select class="form-control custom-select" id="TaxCode12b" formControlName="taxCode12b"
+                          (change)="taxCode($event.target.value, '12b')">
+                          <option value="">Tax Code (12b)</option>
+                          <option value="A">Code A—Uncollected social security or RRTA tax on tips</option>
+                          <option value="B">Code B—Uncollected Medicare tax on tips</option>
+                          <option value="C">Code C—Taxable cost of group-term life insurance over $50,000</option>
+                          <option value="D">Code D—Elective deferrals under a section 401(k) cash or deferred arrangement
+                            (plan)</option>
+                          <option value="E">Code E—Elective deferrals under a section 403(b) salary reduction agreement
+                          </option>
+                          <option value="F">Code F—Elective deferrals under a section 408(k)(6) salary reduction SEP
+                          </option>
+                          <option value="G">Code G—Elective deferrals and employer contributions (including nonelective
+                            deferrals) to any governmental or nongovernmental section 457(b) deferred compensation plan
+                          </option>
+                          <option value="H">Code H—Elective deferrals under section 501(c)(18)(D) tax-exempt organization
+                            plan</option>
+                          <option value="J">Code J—Nontaxable sick pay</option>
+                          <option value="K">Code K—20% excise tax on excess golden parachute payments (not applicable to
+                            Forms W-2AS, W-2CM, W-2GU, or W-2VI)</option>
+                          <option value="L" selected="selected">Code L—Substantiated employee business expense
+                            reimbursements</option>
+                          <option value="M">Code M—Uncollected social security or RRTA tax on taxable cost of group-term
+                            life insurance over $50,000 (for former employees)</option>
+                          <option value="N">Code N—Uncollected Medicare tax on taxable cost of group-term life insurance
+                            over $50,000 (for former employees)</option>
+                          <option value="P">Code P—Excludable moving expense reimbursements paid directly to employee
+                          </option>
+                          <option value="Q">Code Q—Nontaxable combat pay</option>
+                          <option value="R">Code R—Employer contributions to an Archer MSA</option>
+                          <option value="S">Code S—Employee salary reduction contributions under a section 408(p) SIMPLE
+                            plan</option>
+                          <option value="T">Code T—Adoption benefits</option>
+                          <option value="V">Code V—Income from the exercise of nonstatutory stock option(s)</option>
+                          <option value="W">Code W—Employer contributions to a health savings account (HSA)</option>
+                          <option value="Y">Code Y—Deferrals under a section 409A nonqualified deferred compensation plan
+                          </option>
+                          <option value="Z">Code Z—Income under a nonqualified deferred compensation plan that fails to
+                            satisfy section 409A</option>
+                          <option value="AA">Code AA—Designated Roth contributions under a section 401(k) plan</option>
+                          <option value="BB">Code BB—Designated Roth contributions under a section 403(b) plan</option>
+                          <option value="CC">Code CC—HIRE exempt wages and tips (2010 only)</option>
+                          <option value="DD">Code DD—Cost of employer-sponsored health coverage</option>
+                          <option value="EE">Code EE—Designated Roth contributions under a governmental section 457(b)
+                            plan</option>
+                          <option value="FF">Code FF—Permitted benefits under a qualified small employer health
+                            reimbursement arrangement</option>
+                        </select>
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-6 col-md-12 float-left pl-2 pr-0">
+                      <div class="form-group validate-me">
+                        <input type="text" class="form-control" id="Amount" placeholder="Amount"
+                          formControlName="amountTaxCode12b" numbersOnly [required]="taxCode12b">
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+  
+                <div class="row m-0">
+                  <div class="col-lg-5 col-md-12 pl-0 mb-3">
+  
+                    <div class="col-lg-6 col-md-12 float-left pl-0 pr-2">
+                      <div class="form-group">
+                        <select class="form-control custom-select" id="TaxCode12c" formControlName="taxCode12c"
+                          (change)="taxCode($event.target.value, '12c')">
+                          <option value="">Tax Code (12c)</option>
+                          <option value="A">Code A—Uncollected social security or RRTA tax on tips</option>
+                          <option value="B">Code B—Uncollected Medicare tax on tips</option>
+                          <option value="C">Code C—Taxable cost of group-term life insurance over $50,000</option>
+                          <option value="D">Code D—Elective deferrals under a section 401(k) cash or deferred arrangement
+                            (plan)</option>
+                          <option value="E">Code E—Elective deferrals under a section 403(b) salary reduction agreement
+                          </option>
+                          <option value="F">Code F—Elective deferrals under a section 408(k)(6) salary reduction SEP
+                          </option>
+                          <option value="G">Code G—Elective deferrals and employer contributions (including nonelective
+                            deferrals) to any governmental or nongovernmental section 457(b) deferred compensation plan
+                          </option>
+                          <option value="H">Code H—Elective deferrals under section 501(c)(18)(D) tax-exempt organization
+                            plan</option>
+                          <option value="J">Code J—Nontaxable sick pay</option>
+                          <option value="K">Code K—20% excise tax on excess golden parachute payments (not applicable to
+                            Forms W-2AS, W-2CM, W-2GU, or W-2VI)</option>
+                          <option value="L">Code L—Substantiated employee business expense reimbursements</option>
+                          <option value="M">Code M—Uncollected social security or RRTA tax on taxable cost of group-term
+                            life insurance over $50,000 (for former employees)</option>
+                          <option value="N">Code N—Uncollected Medicare tax on taxable cost of group-term life insurance
+                            over $50,000 (for former employees)</option>
+                          <option value="P">Code P—Excludable moving expense reimbursements paid directly to employee
+                          </option>
+                          <option value="Q">Code Q—Nontaxable combat pay</option>
+                          <option value="R">Code R—Employer contributions to an Archer MSA</option>
+                          <option value="S" selected="selected">Code S—Employee salary reduction contributions under a
+                            section 408(p) SIMPLE plan</option>
+                          <option value="T">Code T—Adoption benefits</option>
+                          <option value="V">Code V—Income from the exercise of nonstatutory stock option(s)</option>
+                          <option value="W">Code W—Employer contributions to a health savings account (HSA)</option>
+                          <option value="Y">Code Y—Deferrals under a section 409A nonqualified deferred compensation plan
+                          </option>
+                          <option value="Z">Code Z—Income under a nonqualified deferred compensation plan that fails to
+                            satisfy section 409A</option>
+                          <option value="AA">Code AA—Designated Roth contributions under a section 401(k) plan</option>
+                          <option value="BB">Code BB—Designated Roth contributions under a section 403(b) plan</option>
+                          <option value="CC">Code CC—HIRE exempt wages and tips (2010 only)</option>
+                          <option value="DD">Code DD—Cost of employer-sponsored health coverage</option>
+                          <option value="EE">Code EE—Designated Roth contributions under a governmental section 457(b)
+                            plan</option>
+                          <option value="FF">Code FF—Permitted benefits under a qualified small employer health
+                            reimbursement arrangement</option>
+                        </select>
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-6 col-md-12 float-left pl-2 pr-0">
+  
+                      <div class="form-group validate-me">
+                        <input type="text" class="form-control" id="Amount" placeholder="Amount"
+                          formControlName="amountTaxCode12c" numbersOnly [required]="taxCode12c">
+                      </div>
+  
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row m-0">
+                  <div class="col-lg-5 col-md-12 pl-0 mb-3">
+  
+                    <div class="col-lg-6 col-md-12 float-left pl-0 pr-2">
+                      <div class="form-group">
+                        <select class="form-control custom-select" id="TaxCode12d" formControlName="taxCode12d"
+                          (change)="taxCode($event.target.value, '12d')">
+                          <option value="">Tax Code (12d)</option>
+                          <option value="A">Code A—Uncollected social security or RRTA tax on tips</option>
+                          <option value="B">Code B—Uncollected Medicare tax on tips</option>
+                          <option value="C">Code C—Taxable cost of group-term life insurance over $50,000</option>
+                          <option value="D">Code D—Elective deferrals under a section 401(k) cash or deferred arrangement
+                            (plan)</option>
+                          <option value="E">Code E—Elective deferrals under a section 403(b) salary reduction agreement
+                          </option>
+                          <option value="F" selected="selected">Code F—Elective deferrals under a section 408(k)(6) salary
+                            reduction SEP</option>
+                          <option value="G">Code G—Elective deferrals and employer contributions (including nonelective
+                            deferrals) to any governmental or nongovernmental section 457(b) deferred compensation plan
+                          </option>
+                          <option value="H">Code H—Elective deferrals under section 501(c)(18)(D) tax-exempt organization
+                            plan</option>
+                          <option value="J">Code J—Nontaxable sick pay</option>
+                          <option value="K">Code K—20% excise tax on excess golden parachute payments (not applicable to
+                            Forms W-2AS, W-2CM, W-2GU, or W-2VI)</option>
+                          <option value="L">Code L—Substantiated employee business expense reimbursements</option>
+                          <option value="M">Code M—Uncollected social security or RRTA tax on taxable cost of group-term
+                            life insurance over $50,000 (for former employees)</option>
+                          <option value="N">Code N—Uncollected Medicare tax on taxable cost of group-term life insurance
+                            over $50,000 (for former employees)</option>
+                          <option value="P">Code P—Excludable moving expense reimbursements paid directly to employee
+                          </option>
+                          <option value="Q">Code Q—Nontaxable combat pay</option>
+                          <option value="R">Code R—Employer contributions to an Archer MSA</option>
+                          <option value="S">Code S—Employee salary reduction contributions under a section 408(p) SIMPLE
+                            plan</option>
+                          <option value="T">Code T—Adoption benefits</option>
+                          <option value="V">Code V—Income from the exercise of nonstatutory stock option(s)</option>
+                          <option value="W">Code W—Employer contributions to a health savings account (HSA)</option>
+                          <option value="Y">Code Y—Deferrals under a section 409A nonqualified deferred compensation plan
+                          </option>
+                          <option value="Z">Code Z—Income under a nonqualified deferred compensation plan that fails to
+                            satisfy section 409A</option>
+                          <option value="AA">Code AA—Designated Roth contributions under a section 401(k) plan</option>
+                          <option value="BB">Code BB—Designated Roth contributions under a section 403(b) plan</option>
+                          <option value="CC">Code CC—HIRE exempt wages and tips (2010 only)</option>
+                          <option value="DD">Code DD—Cost of employer-sponsored health coverage</option>
+                          <option value="EE">Code EE—Designated Roth contributions under a governmental section 457(b)
+                            plan</option>
+                          <option value="FF">Code FF—Permitted benefits under a qualified small employer health
+                            reimbursement arrangement</option>
+                        </select>
+                      </div>
+                    </div>
+  
+                    <div class="col-lg-6 col-md-12 float-left pl-2 pr-0">
+                      <div class="form-group validate-me">
+                        <input type="text" class="form-control" id="Amount" placeholder="Amount"
+                          formControlName="amountTaxCode12d" numbersOnly [required]="taxCode12d">
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+  
+                <div class="row mb-2">
+                  <div class="col-lg-5 col-md-12">
+                    <div class="form-group validate-me">
+                      <label for="EmailAddress">Your Email Address<span class="mandatory">*</span></label>
+                      <input type="email" class="form-control" id="EmailAddress" placeholder="This field is mandatory"
+                        formControlName="email" required>
+                      <div *ngIf="salarySubmitted && w2Form.controls.email.errors" class="error">
+                        <div *ngIf="w2Form.controls.email.errors">
+                          Please enter a valid email address
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row mt-5">
+                  <div class="col-lg-12 col-md-12 text-center nexStep">
+                    <button type="submit" href="#step-4" id="activate-step-4" (click)="handleReviewStub()"
+                      class="btn nextStep-btn">Review your W2</button>
+                    <p>You can always go back to the previous step to edit your information!</p>
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+  
+          <div *ngIf="showStep_4" class="row createstub-content" id="step-4">
+            <div class="col-lg-12">
+              <div class="col-md-12 mb-5">
+                <h2 class="title">Preview Your W2 Form</h2>
+              </div>
+              
+              <div class="col-md-12 col-lg-10 offset-lg-1">
+                <p class="note text-center"><!--Choose your preferred template, revise your information and download your
+                W2 Form-->                                    
+                  <span>The following information will appear on your final W-2 document.</span>
+                </p>
+                <!--<div class="stub-templates">
+
+                  <div class="template-item ">
+                    <label class="template-color-box" [class]="{'template-active': template == 'a'}" id="template-A">
+                      <input type="radio" name="template" checked="" value="A" class="hidden" id="W2-template-A"
+                        (click)="template = 'a'; generateW2HtmlToImage()">
+                    </label> <span class="template-title">Template A</span>
+                  </div>
+
+                  <div class="template-item">
+                    <label class="template-color-box" [class]="{'template-active': template == 'b'}" id="template-B">
+                      <input type="radio" name="template" checked="" value="B" class="hidden" id="W2-template-B"
+                        (click)="template = 'b'; generateW2HtmlToImage()">
+                    </label> <span class="template-title">Template B</span>
+                  </div>
+
+                  <div class="template-item">
+                    <label class="template-color-box" [class]="{'template-active': template == 'c'}" id="template-C">
+                      <input type="radio" name="template" checked="" value="C" class="hidden" id="W2-template-C"
+                        (click)="template = 'c'; generateW2HtmlToImage()">
+                    </label> <span class="template-title">Template C</span>
+                  </div>
+
+                  <div class="template-item">
+                    <label class="template-color-box" [class]="{'template-active': template == 'd'}" id="template-D">
+                      <input type="radio" name="template" checked="" value="D" class="hidden" id="W2-template-D"
+                        (click)="template = 'd'; generateW2HtmlToImage()">
+                    </label> <span class="template-title">Template D</span>
+                  </div>
+
+                  <div class="template-item">
+                    <label class="template-color-box" [class]="{'template-active': template == 'e'}" id="template-E">
+                      <input type="radio" name="template" checked="" value="e" class="hidden" id="W2-template-E"
+                        (click)="template = 'e'; generateW2HtmlToImage()">
+                    </label> <span class="template-title">Template E</span>
+                  </div>
+                  
+                  <div class="template-item">
+                    <label class="template-color-box" [class]="{'template-active': template == 'f'}" id="template-F">
+                      <input type="radio" name="template" checked="" value="f" class="hidden" id="W2-template-F"
+                        (click)="template = 'f'; generateW2HtmlToImage()">
+                    </label> <span class="template-title">Template F</span>
+                  </div>
+                  
+                </div>-->
+              </div>
+
+              <div class="col-md-12 col-lg-10 offset-lg-1 mb-3">
+                <div class="stub-preview">
+                  <div *ngIf="!w2ImageSrc">
+                    <app-spinner></app-spinner>
+                  </div>
+                  <img else class="w-100" [src]="w2ImageSrc">
+                </div>
+              </div>
+              <p class="note text-center">  
+                <span>Note: All watermarks and background images will be removed from your final document(s).</span>
+              </p>
+              <div class="row mt-5">
+                <div class="col-lg-12 col-md-12 text-center nexStep">
+                  <button type="submit" data-toggle="modal" data-target="#payment-modal" class="nextStep-btn">Checkout & Download</button>
+                  <p>Make sure your information is correct and continue to pay and download your stub(s)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </form>
+      </div>
+    </section><!-- End createstub-form Section -->
+  </main><!-- End #main -->
+  
+  <!-- ======= Payment Modal ======= -->
+  <div class="modal fade" id="payment-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+          <div class="d-flex">
+              <h2 class="title">Checkout</h2>
+              <div class="Secure-payment-methods d-flex">
+                <img class="ml-4" src="assets/media/icons/security-blue.svg">
+                <div>
+                  <p>100% Security</p>
+                  <p>Secure payment methods</p>
+                </div>
+              </div>
+            </div>
+        <button #closePaypalModal type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-body p-0">
+          <div class="popup-note mt-5">On the next screen, you will have the option of either paying with
+            your Paypal account, or simply to Pay with a Credit or Debit card without creating a Paypal account.
+          </div>
+          <div class="popup-table">
+            <table>
+              <tbody>
+                <tr>
+                  <td class="td-left">Price per stub<span>$9.99</span></td>
+                  <td class="td-right">$8.99</td>
+                </tr>
+                <tr>
+                  <td class="td-left">Number of stubs</td>
+                  <td class="td-right">x1</td>
+                </tr>
+                <tr>
+                  <td class="td-left">Total</td>
+                  <td class="td-right"><b>$8.99</b></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="form-radio text-left mt-4">
+              <input type="radio" name="status" value="employee" id="paypal" checked="">
+              <label for="paypal"> <img src="assets/media/paypal-logo.webp" alt="PayPal"> </label>
+            </div>
+          </div>
+          <div class="text-center">
+            <!--<button type="submit" class="pay-btn">Pay $8.99</button>-->
+            <div id="paypal-checkout-btn"></div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <!-- End Payment Modal Section -->
+  

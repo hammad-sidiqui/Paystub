@@ -1,0 +1,754 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+	<!-- font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+	body { width: 1120px;
+            padding: 20px;
+            margin: auto;
+			position:relative;
+	}
+	td{
+		padding:0 5px;
+	}
+	table {
+		width:100%;
+		border-collapse: collapse;
+        width: 100%;
+		
+	}
+			body,div,table,thead,tbody,tfoot,tr,th,td,p {
+			font-family: "Montserrat";
+			font-size: 12px;
+		}
+		  .watermark {
+            position: absolute;
+			opacity: 0.75;
+			top: 70px;
+			background-image: url(http://wos.gardendesignlandscaping.com:8080/assets/media/paystub-watermark.png);
+			width: 910px;
+			left: 0;
+			right: 0;
+			margin: auto;
+			height: 620px;
+			z-index: 999;
+			transform: rotate(-2deg);
+        }
+	</style>
+
+</head>
+
+<body>
+	<table >
+		<colgroup width="84"></colgroup>
+		<colgroup width="203"></colgroup>
+		<colgroup width="134"></colgroup>
+		<colgroup span="5" width="64"></colgroup>
+		<colgroup width="68"></colgroup>
+		<colgroup span="3" width="64"></colgroup>
+		{{#if watermark }}
+			<div class="watermark"></div>
+		{{/if}}
+		<tr>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" rowspan=2 height="40" align="center" valign=middle sdval="22222" sdnum="1033;">
+				<font face="Montserrat" size=3 color="#000000">22222</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="center" valign=top>
+				<font face="Montserrat" size=1 color="#000000">a. Employes's social security number </font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000" colspan=9 rowspan=2 align="left" valign=middle>
+				<font face="Montserrat" size=2 color="#000000">OMB No. 1545-000B</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" align="center" valign=middle>
+				<font face="Montserrat" size=3 color="#000000">{{ empSSN }}</font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000;  border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=5 height="20" align="left" valign=top>
+				<font face="Montserrat" size=1 color="#000000">b. Employer Identification Number (EIN)</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="left" valign=top>
+				<font color="#000000">1. Wages, tips other compensation</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=top>
+				<font color="#000000">2. Federal income tax withheld</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=5 height="21" align="center" valign=top>
+				<font face="Montserrat" size=3 color="#000000">{{ empEIN }}</font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="center" valign=top sdval="123122" sdnum="1033;0;#,##0.00">
+				<font size=3 color="#000000">{{annualSalary}}</font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=top sdval="123122" sdnum="1033;0;#,##0.00">
+				<font size=3 color="#000000">{{federalTax}}</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" colspan=2 height="20" align="left" valign=top>
+				<font color="#000000">c. Employer's name, address and zip code</font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="left" valign=top>
+				<font color="#000000">3. Social security wages</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=top>
+				<font color="#000000">4. Socail security tax withheld</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="21" align="center" valign=top>
+				<font size=3 color="#000000">{{ businessName }}</font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="center" valign=top>
+				<font size=3 color="#000000">{{annualSalary}}</font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=top>
+				<font size=3 color="#000000">{{socialSecurityTaxWithHeld}}</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="21" align="center" valign=top>
+				<font size=3 color="#000000">{{ companyStreetAddress }}</font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="left" valign=top>
+				<font color="#000000">5. Medicare wages and tips</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=top>
+				<font color="#000000">6. Medicare tax withheld</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="21" align="center" valign=top>
+				<font size=3 color="#000000">{{ companyLocation }}</font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="center" valign=top>
+				<font size=3 color="#000000">{{annualSalary}}</font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=top>
+				<font size=3 color="#000000">{{MedicareTaxWithHeld}}</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="21" align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="left" valign=top>
+				<font color="#000000">7. Social security tips</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=top>
+				<font color="#000000">8. Allocated tips</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="21" align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="center" valign=top>
+				<font size=3 color="#000000">0.00</font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=top>
+				<font size=3 color="#000000">0.00</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" colspan=2 height="20" align="left" valign=top>
+				<font color="#000000">d. Control number</font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="left">
+				<font color="#000000">9</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=top bgcolor="#E7E6E6">
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="left" valign=top>
+				<font color="#000000">10. Dependant care benefits</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" height="21" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="center" valign=top bgcolor="#E7E6E6">
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=3 align="center" valign=top>
+				<font size=3 color="#000000">0.00</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" colspan=2 height="20" align="left" valign=top>
+				<font color="#000000">Employee's first name and initial</font>
+			</td>
+			<td style="border-top: 1px solid #000000" colspan=2 align="left" valign=top>
+				<font color="#000000">Last name</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000">Suff.</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="left" valign=top>
+				<font color="#000000">11. Nonqualified plans</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=top>
+				<font color="#000000">12a </font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="21" align="center" valign=top>
+				<font size=3 color="#000000">{{empFirstName}}</font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000">{{empLastName}}</font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=4 align="center" valign=top>
+				<font size=3 color="#000000">0.00</font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="21" align="center" valign=top sdval="123123" sdnum="1033;">
+				<font size=3 color="#000000">{{empStreetAddress}}</font>
+			</td>
+			<td align="left" valign=top>
+				<font size=3 color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=top sdval="13"
+				sdnum="1033;">
+				<font color="#000000">13</font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000">Satisfactory Employe</font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000">Retirement Plan</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000">Third-party Sick pay</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=top>
+				<font color="#000000">12b</font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" colspan=1 height="21" align="center" valign=top>
+				<font size=3 color="#000000">{{empZipCode}}</font>
+			</td>
+			<td  colspan=1 height="21" align="center" valign=top>
+				
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="20" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=top>
+				<font color="#000000">14. Other</font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=top>
+				<font color="#000000">12c</font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="20" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-left: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="20" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-left: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=top>
+				<font color="#000000">12d</font>
+			</td>
+			<td style="border-top: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="20" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-left: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" colspan=2 height="20"
+				align="left" valign=top>
+				<font color="#000000">f. Employee's address and ZIP code</font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=top>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000"
+				colspan=3 align="left" valign=top bgcolor="#E7E6E6">
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000" height="20" align="left" valign=bottom>
+				<font color="#000000">15 State</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000">Employer's state ID number</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; text-align:center;" colspan=2 valign=top>
+				<font color="#000000">16 State wages, tips, etc</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; text-align:center;" colspan=2 valign=top>
+				<font color="#000000">17 State income tax</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; text-align:center;" colspan=2 valign=top>
+				<font color="#000000">18 Local wages, tips, etc.</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; text-align:center;" colspan=2 valign=top>
+				<font color="#000000">19 Local wages, tips, etc.</font>
+			</td>
+			<td style="border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000; text-align:center;" colspan=2 valign=top>
+				<font color="#000000">20 Locality name</font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-left: 1px solid #000000; border-right: 1px solid #000000" height="21" align="center" valign=bottom>
+				<font size=3 color="#000000">{{location}}</font>
+			</td>
+			<td style="border-bottom: 1px dotted #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br>{{stateIDNumber}}</font>
+			</td>
+			<td style="border-bottom: 1px dotted #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=top>
+				<font size="3" color="#000000">{{annualSalary}}</font>
+			</td>
+			<td style="border-bottom: 1px dotted #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=top>
+				{{#if showhidestate}}
+				<font size="3" color="#000000">{{stateTax}}</font>
+				{{else}}
+				<font size="3" color="#000000">0.00</font>
+				{{/if}}
+			</td>
+
+			<td style="border-bottom: 1px dotted #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=top>
+				<font size="3" color="#000000">0.00</font>
+			</td>
+			<td style="border-bottom: 1px dotted #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=top>
+				<font size="3" color="#000000">0.00</font>
+			</td>
+			<td style="border-bottom: 1px dotted #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" colspan=2 align="center" valign=top>
+				<font size="3" color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-top: 1px dotted #000000; border-left: 1px solid #000000" height="20" align="center" valign=bottom>
+				<font color="#000000"><br>{{empState}}</font>
+			</td>
+			<td style="border-top: 1px dotted #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px dotted #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px dotted #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px dotted #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px dotted #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px dotted #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px dotted #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px dotted #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px dotted #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px dotted #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-top: 1px dotted #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="20" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+			<td style="border-bottom: 1px solid #000000; border-right: 1px solid #000000" align="left" valign=bottom>
+				<font color="#000000"><br></font>
+			</td>
+		</tr>
+		<tr >
+			<td   colspan="2" rowspan="7" height="10" align="right" valign="top">
+				
+	     	<h1 style="font-size:50px;" > <small style="font-size:x-small">FORM</small> W-2</h1>
+	
+				 </td>
+
+			 <td  colspan="2" rowspan="7" height="10" align="left" valign="center">
+				
+			
+				<small style="font-size: 25px;">Wage and Tax Statement</small>
+				<p align="left" valign="bottom"></b></p>
+		 </td>
+			 <td  colspan="4" rowspan="7" height="10" align="left" valign="top">
+				<h1> {{companyTaxYear}}</h1>
+			 </td>
+			
+			 <td  colspan="4" rowspan="7" height="10" align="left" valign="bottom">
+				
+			</td>
+			
+		</tr>
+
+		
+	</table>
+	<p align="center"><b>Copy 1-For State, City or Local Tax Department</b></p>
+</body>
+
+</html>
